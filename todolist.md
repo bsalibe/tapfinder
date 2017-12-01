@@ -4,7 +4,7 @@
 * Initial pages
   * Home (Sun)
   * Login
-  * About
+  * About (Aseem)
 * One same code for tabs because the tab is prevalent in all pages (maybe do with css)
 * Database
 * Working query for search (Sun)
