@@ -13,7 +13,18 @@
 </head>
 
 <body style="background-color: #ccebff; padding-top: 200px; padding-bottom: 70px">
-	<div class= "container">
+<?php 
+// The code that you recieve input data from the form goes to here.
+$server = "localhost";
+$username = "root";
+$password = "root";
+$db = "sakila";
+//Create Connection
+$conn = mysqli_connect($server, $username, $password, $db);
+if (!$conn){
+	die("Connection failed: ".mysqli_connect_error());
+}
+echo'	<div class= "container">
 		<div style="background: #b3e0ff !important" class ="jumbotron fixed-top">
 			<ul class="nav nav-tabs nav-justified 
 			border border-top-0 border-right-0 border-left-0 border-white"
@@ -161,9 +172,9 @@
 </div>
 <div class="fixed-bottom" style="padding:10px">
 <button type="button" class="btn btn-lg btn-danger btn-block">Logout</button>
-</div>
+</div>';
   
-
+?>
 </body>
 </html>
 
