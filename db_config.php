@@ -3,7 +3,7 @@
 //mysql connection details
 
 $username = "root"; //have to verify when on google cloud
-$password = "Olomitt1";
+$password = "";
 
 //will have to be changed to IP address later
 $dsn = "mysql:host=localhost;dbname=inst377;charset=utf8mb4";
