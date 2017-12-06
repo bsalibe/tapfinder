@@ -10,6 +10,21 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.6/umd/popper.min.js"></script>
 	<!-- Latest compiled JavaScript -->
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
+
+	<!-- TRYING SUBMIT -->
+	<script>
+		$("#submitBuilding").click(function(){
+			buildingName = $('input[name="buildingName"]').val();
+			altName = $('input[name="altName"]').val();
+
+			$.post("insert.php",
+			{
+				buildingName: buildingName,
+				altName: altName
+			}
+				);
+		});
+	</script>
 </head>
 
 <body style="background-color: #ccebff; padding-top: 200px; padding-bottom: 70px">
@@ -18,7 +33,7 @@
 $server = "localhost";
 $username = "root";
 $password = "root";
-$db = "sakila";
+$db = "sakila"; //TYPE DATABASE NAME!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 //Create Connection
 $conn = mysqli_connect($server, $username, $password, $db);
 if (!$conn){
@@ -30,21 +45,23 @@ echo'	<div class= "container">
 			border border-top-0 border-right-0 border-left-0 border-white"
 			style="font-size: 20px">
 			<li class="nav-item">
-				<a class="nav-link" href="adminlogged.html">Admin</a>
+				<a class="nav-link" href="adminlogged.php">Admin</a>
 			</li>
 		</ul>
 	</nav>
 </div>
 
+<!-- ************** INSERT BUILDING NAME************** -->
+
 <div class="container">
 	<!-- Button to Open the Modal -->
-	<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal" 
+	<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#modalOne" 
 	onmouseover="" style="cursor: pointer;">
 	Add New Building
 	</button>
 
 	<!-- The Modal -->
-	<div class="modal fade" id="myModal">
+	<div class="modal fade" id="modalOne">
 		<div class="modal-dialog">
 			<div class="modal-content">
 
@@ -54,20 +71,21 @@ echo'	<div class= "container">
 					<button type="button" class="close" data-dismiss="modal">&times;</button>
 				</div>
 
-				<!-- Modal body -->
+				<!-- ********************************** FORM -->
 				<div class="modal-body">
 					<form>
 						<div class="form-group">
-						<label for="email">Building Name:</label>
-							<input type="email" class="form-control" id="email">
+							Building Name: <input type="text" class="form-control" name="buildingName">
 						</div>
 						<div class="form-group">
-							<label for="pwd">Alternate Name:</label>
-							<input type="password" class="form-control" id="pwd">
+							Alternate Name:
+							<input type="text" class="form-control" name="altName">
 						</div>
-						<button type="submit" class="btn btn-primary">Submit</button>
+						<button id="submitBuilding" type="submit" class="btn btn-primary">Submit</button>
 					</form>
 				</div>
+
+
 				<div class="modal-body">
 					Please double-check your spelling
 				</div>
@@ -81,15 +99,18 @@ echo'	<div class= "container">
 	</div>
 </div>
 </br>
+
+<!-- **************** INSERT WATER LOCATION WITH BUILDING ID ************ -->
+
 <div class="container">
 	<!-- Button to Open the Modal -->
-	<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal" 
+	<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#modalTwo" 
 	onmouseover="" style="cursor: pointer;">
 	Add New Location
 	</button>
 
 	<!-- The Modal -->
-	<div class="modal fade" id="myModal">
+	<div class="modal fade" id="modalTwo">
 		<div class="modal-dialog">
 			<div class="modal-content">
 
@@ -99,20 +120,22 @@ echo'	<div class= "container">
 					<button type="button" class="close" data-dismiss="modal">&times;</button>
 				</div>
 
-				<!-- Modal body -->
+				<!-- ********************************** FORM -->
 				<div class="modal-body">
 					<form>
 						<div class="form-group">
-						<label for="email">Building Id:</label>
-							<input type="email" class="form-control" id="email">
+						Building Id:
+							<input type="text" class="form-control" name="buildingId">
 						</div>
 						<div class="form-group">
-							<label for="pwd">Location:</label>
-							<input type="password" class="form-control" id="pwd">
+							<label for="location">Location:</label>
+							<input type="text" class="form-control" name="location">
 						</div>
-						<button type="submit" class="btn btn-primary">Submit</button>
+						<button id="submitLocation"type="submit" class="btn btn-primary">Submit</button>
 					</form>
 				</div>
+
+
 				<div class="modal-body">
 					Please double-check your spelling
 				</div>
@@ -126,14 +149,17 @@ echo'	<div class= "container">
 	</div>
 </div>
 </br>
+
+<!-- **************** REMOVE LOCATION WITH ID **************** -->
+
 <div class="container">
 	<!-- Button to Open the Modal -->
-	<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal" 
+	<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#modalThree" 
 	onmouseover="" style="cursor: pointer;">
 	Remove A Location	</button>
 
 	<!-- The Modal -->
-	<div class="modal fade" id="myModal">
+	<div class="modal fade" id="modalThree">
 		<div class="modal-dialog">
 			<div class="modal-content">
 
@@ -143,20 +169,22 @@ echo'	<div class= "container">
 					<button type="button" class="close" data-dismiss="modal">&times;</button>
 				</div>
 
-				<!-- Modal body -->
+				<!-- ********************************** FORM -->
 				<div class="modal-body">
 					<form>
 						<div class="form-group">
-						<label for="email">Building Name:</label>
-							<input type="email" class="form-control" id="email">
+						<label for="buildingId">Building Id:</label>
+							<input type="buildingId" class="form-control" id="buildingId">
 						</div>
 						<div class="form-group">
-							<label for="pwd">Location:</label>
-							<input type="password" class="form-control" id="pwd">
+							<label for="location">Location:</label>
+							<input type="location" class="form-control" id="location">
 						</div>
-						<button type="submit" class="btn btn-primary">Submit</button>
+						<button id="submitDelete" type="submit" class="btn btn-primary">Submit</button>
 					</form>
 				</div>
+
+
 				<div class="modal-body">
 					Please doublecheck your spelling
 				</div>
@@ -174,6 +202,7 @@ echo'	<div class= "container">
 <button type="button" class="btn btn-lg btn-danger btn-block">Logout</button>
 </div>';
   
+mysqli_close($conn);
 ?>
 </body>
 </html>
