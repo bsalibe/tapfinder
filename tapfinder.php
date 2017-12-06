@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html>
  
 <head>
@@ -7,7 +8,7 @@
    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
  
 	<!-- for making ajax request-->
-   <script type="text/javascript" src="liveSearch.js"></script>
+   <script type="text/javascript" src="js/liveSearch.js"></script>
 
 	<!-- JQuery smooth scroll for SPA-->
  	<script type="text/javascript" src="smoothScroll.js"></script>
@@ -15,8 +16,7 @@
    <!-- for CSS file. -->
    <link rel="stylesheet" type="text/css" href="search.css">
 
-   <!--need to review this with the professor, not sure if i can do this -->
-   <?php require_once "buildingsearch.php" ?> 
+   
 </head>
  
 <body>
