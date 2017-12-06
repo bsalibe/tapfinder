@@ -10,13 +10,13 @@
    <script type="text/javascript" src="ajax.js"></script>
  
    <!-- for CSS file. -->
-   <link rel="stylesheet" type="text/css" href="style.css">
+   <link rel="stylesheet" type="text/css" href="search.css">
 </head>
  
 <body>
  
 <!-- Search box. -->
- 
+
    <input type="text" id="building_search" placeholder="Enter building name"/>
  
    <br><b>Ex: </b><i>Mckeldin, Stamp</i><br/>
@@ -24,6 +24,10 @@
    <!-- Search Suggestions is displayed here -->
    <div id="Suggestions"></div>
  
+<!--  -->
+ 	<div>
+ 			<?php require "something.php" ?>
+ 	</div>
 </body>
 
 </html>
