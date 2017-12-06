@@ -9,3 +9,8 @@
 * Database
 * Working query for search (Sun)
 * Working result for search (Sun)
+
+
+
+Additional pages
+1. Admin home page/Dashboard (to show who added what when etc)
