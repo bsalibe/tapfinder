@@ -7,8 +7,8 @@
   * About (Aseem)
 * One same code for tabs because the tab is prevalent in all pages (maybe do with css)
 * Database
-* Working query for search (Sun)
-* Working result for search (Sun)
+* Working query for search (Sun)  *****Done*****
+* Working result for search (Sun) *****Done*****
 
 
 
