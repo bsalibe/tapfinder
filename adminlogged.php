@@ -22,17 +22,39 @@
 				buildingName: buildingName,
 				altName: altName
 			}
-				);
+			);
+		});
+		$("#submitLocation").click(function(){
+			buildingId = $('input[name="buildingId"]').val();
+			location = $('input[name="location"]').val();
+
+			$.post("insert.php",
+			{
+				buildingId: buildingId,
+				location: location
+			}
+			);
+		});
+		$("#submitDelete").click(function(){
+			buildingId = $('input[name="buildingId"]').val();
+			location = $('input[name="location"]').val();
+
+			$.post("insert.php",
+			{
+				buildingId: buildingId,
+				location: location
+			}
+			);
 		});
 	</script>
 </head>
 
 <body style="background-color: #ccebff; padding-top: 200px; padding-bottom: 70px">
-<?php 
+	<?php 
 // The code that you recieve input data from the form goes to here.
-$server = "localhost";
-$username = "root";
-$password = "root";
+	$server = "localhost";
+	$username = "root";
+	$password = "root";
 $db = "sakila"; //TYPE DATABASE NAME!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 //Create Connection
 $conn = mysqli_connect($server, $username, $password, $db);
@@ -40,15 +62,15 @@ if (!$conn){
 	die("Connection failed: ".mysqli_connect_error());
 }
 echo'	<div class= "container">
-		<div style="background: #b3e0ff !important" class ="jumbotron fixed-top">
-			<ul class="nav nav-tabs nav-justified 
-			border border-top-0 border-right-0 border-left-0 border-white"
-			style="font-size: 20px">
-			<li class="nav-item">
-				<a class="nav-link" href="adminlogged.php">Admin</a>
-			</li>
-		</ul>
-	</nav>
+<div style="background: #b3e0ff !important" class ="jumbotron fixed-top">
+	<ul class="nav nav-tabs nav-justified 
+	border border-top-0 border-right-0 border-left-0 border-white"
+	style="font-size: 20px">
+	<li class="nav-item">
+		<a class="nav-link" href="adminlogged.php">Admin</a>
+	</li>
+</ul>
+</nav>
 </div>
 
 <!-- ************** INSERT BUILDING NAME************** -->
@@ -58,45 +80,45 @@ echo'	<div class= "container">
 	<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#modalOne" 
 	onmouseover="" style="cursor: pointer;">
 	Add New Building
-	</button>
+</button>
 
-	<!-- The Modal -->
-	<div class="modal fade" id="modalOne">
-		<div class="modal-dialog">
-			<div class="modal-content">
+<!-- The Modal -->
+<div class="modal fade" id="modalOne">
+	<div class="modal-dialog">
+		<div class="modal-content">
 
-				<!-- Modal Header -->
-				<div class="modal-header">
-					<h4 class="modal-title">New Building Name:</h4>
-					<button type="button" class="close" data-dismiss="modal">&times;</button>
-				</div>
-
-				<!-- ********************************** FORM -->
-				<div class="modal-body">
-					<form>
-						<div class="form-group">
-							Building Name: <input type="text" class="form-control" name="buildingName">
-						</div>
-						<div class="form-group">
-							Alternate Name:
-							<input type="text" class="form-control" name="altName">
-						</div>
-						<button id="submitBuilding" type="submit" class="btn btn-primary">Submit</button>
-					</form>
-				</div>
-
-
-				<div class="modal-body">
-					Please double-check your spelling
-				</div>
-				<!-- Modal footer -->
-				<div class="modal-footer">
-					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-				</div>
-
+			<!-- Modal Header -->
+			<div class="modal-header">
+				<h4 class="modal-title">New Building Name:</h4>
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
 			</div>
+
+			<!-- ********************************** FORM -->
+			<div class="modal-body">
+				<form>
+					<div class="form-group">
+						Building Name: <input type="text" class="form-control" name="buildingName">
+					</div>
+					<div class="form-group">
+						Alternate Name:
+						<input type="text" class="form-control" name="altName">
+					</div>
+					<button id="submitBuilding" type="submit" class="btn btn-primary">Submit</button>
+				</form>
+			</div>
+
+
+			<div class="modal-body">
+				Please double-check your spelling
+			</div>
+			<!-- Modal footer -->
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+			</div>
+
 		</div>
 	</div>
+</div>
 </div>
 </br>
 
@@ -107,46 +129,46 @@ echo'	<div class= "container">
 	<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#modalTwo" 
 	onmouseover="" style="cursor: pointer;">
 	Add New Location
-	</button>
+</button>
 
-	<!-- The Modal -->
-	<div class="modal fade" id="modalTwo">
-		<div class="modal-dialog">
-			<div class="modal-content">
+<!-- The Modal -->
+<div class="modal fade" id="modalTwo">
+	<div class="modal-dialog">
+		<div class="modal-content">
 
-				<!-- Modal Header -->
-				<div class="modal-header">
-					<h4 class="modal-title">Add Location</h4>
-					<button type="button" class="close" data-dismiss="modal">&times;</button>
-				</div>
-
-				<!-- ********************************** FORM -->
-				<div class="modal-body">
-					<form>
-						<div class="form-group">
-						Building Id:
-							<input type="text" class="form-control" name="buildingId">
-						</div>
-						<div class="form-group">
-							<label for="location">Location:</label>
-							<input type="text" class="form-control" name="location">
-						</div>
-						<button id="submitLocation"type="submit" class="btn btn-primary">Submit</button>
-					</form>
-				</div>
-
-
-				<div class="modal-body">
-					Please double-check your spelling
-				</div>
-				<!-- Modal footer -->
-				<div class="modal-footer">
-					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-				</div>
-
+			<!-- Modal Header -->
+			<div class="modal-header">
+				<h4 class="modal-title">Add Location</h4>
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
 			</div>
+
+			<!-- ********************************** FORM -->
+			<div class="modal-body">
+				<form>
+					<div class="form-group">
+						Building Id:
+						<input type="text" class="form-control" name="buildingId">
+					</div>
+					<div class="form-group">
+						<label for="location">Location:</label>
+						<input type="text" class="form-control" name="location">
+					</div>
+					<button id="submitLocation"type="submit" class="btn btn-primary">Submit</button>
+				</form>
+			</div>
+
+
+			<div class="modal-body">
+				Please double-check your spelling
+			</div>
+			<!-- Modal footer -->
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+			</div>
+
 		</div>
 	</div>
+</div>
 </div>
 </br>
 
@@ -173,7 +195,7 @@ echo'	<div class= "container">
 				<div class="modal-body">
 					<form>
 						<div class="form-group">
-						<label for="buildingId">Building Id:</label>
+							<label for="buildingId">Building Id:</label>
 							<input type="buildingId" class="form-control" id="buildingId">
 						</div>
 						<div class="form-group">
@@ -199,9 +221,11 @@ echo'	<div class= "container">
 	</div>
 </div>
 <div class="fixed-bottom" style="padding:10px">
-<button type="button" class="btn btn-lg btn-danger btn-block">Logout</button>
+	<a href="about.html"><button type="button" class="btn btn-lg btn-danger btn-block"
+	onmouseover="" style="cursor: pointer;">
+	Logout</button></a>
 </div>';
-  
+
 mysqli_close($conn);
 ?>
 </body>
