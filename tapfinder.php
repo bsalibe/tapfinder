@@ -28,7 +28,7 @@
 
 
   <!-- Main Navigation, import style sheet-->
-  <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
+  <nav class="navbar navbar-expand-sm navbar-dark fixed-top">
    <a class="navbar-brand" href=>
      <img src="logo.svg" alt="Logo" style="width:50px;">
   </a>
@@ -65,10 +65,11 @@
 
 <div id ="about" class="sections">
    <h1> ABOUT </h1>
-   <h3> <img src="logo.svg" alt="Logo" style="width:40px"> TapFinder</h3> </br>
+   <h3> <img src="logo.svg" alt="Logo" style="width:40px"> What is Tapfinder</h3> </br>
    <p> 
+      TapFinder is dynamic web application that helps locate water filling stations.</br>
       TapFinder is focused for University of Maryland, College Park (UMCP)</br>
-      We built this system to help users find filtered water stations around UMDCP</br>
+      We built this system to help users find filtered water stations around UMD, CP</br>
    </p>
    <h4>Ideal Scenario</h4>
    <ul>
@@ -111,7 +112,7 @@
             contact_tapfinder@gmail.com
          </div>
          <div class="modal-body">
-            Please state your purpose in the subject line
+            Please state your purpose in the subject line when you email
          </div>
 
          <!-- Modal footer -->
@@ -129,6 +130,19 @@
 <!-- about page content goes in here, import style sheet-->
 <div id="login" class="sections">
    <h1>LOGIN</h1>
+
+   <!-- LOGIN FORM -->
+
+   <div id="loginForm">
+      <div class="form-group">
+         <label for="usr">Email:</label>
+         <input type="text" class="form-control" id="usr">
+      </div>
+      <div class="form-group">
+         <label for="pwd">Password:</label>
+         <input type="password" class="form-control" id="pwd">
+      </div>
+   </div>
 </div>
 
 </body>
