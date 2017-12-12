@@ -1,62 +1,176 @@
-<html>
-<head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<!-- Latest compiled and minified CSS -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
-	<!-- jQuery library -->
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-	<!-- Popper JS -->
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.6/umd/popper.min.js"></script>
-	<!-- Latest compiled JavaScript -->
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
+<!DOCTYPE html>
 
-	<!-- TRYING SUBMIT -->
-	<script>
-		
-	</script>
+<html>
+
+<head>
+   <title>Tap Finder</title>
+   <meta charset="utf-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <!-- Latest compiled and minified CSS -->
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
+   <!-- jQuery library -->
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+   <!-- Popper JS -->
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.6/umd/popper.min.js"></script>
+   <!-- Latest compiled JavaScript -->
+   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
+   <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+   <!-- for making ajax request-->
+   <script type="text/javascript" src="js/liveSearch.js"></script>
+   <!-- JQuery smooth scroll for SPA-->
+   <script type="text/javascript" src="smoothScroll.js"></script>
+   <!-- for CSS file. -->
+   <link rel="stylesheet" type="text/css" href="tapfinder.css">   
 </head>
 
-<body style="background-color: #ccebff; padding-top: 200px; padding-bottom: 70px">
-	<?php 
-// The code that you recieve input data from the form goes to here.
-	$server = "localhost";
-	$username = "root";
-	$password = "root";
-$db = "sakila"; //TYPE DATABASE NAME!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-//Create Connection
+<!-- AUTOMATIC PAGE SCROLL WITH CLICK -->
+<body data-spy="scroll" data-target=".navbar" data-offset="50">
+
+<!-- SQL CONNECTION -->
+
+<?php
+$server = "localhost";
+$username = "root";
+$password = "root";
+$db = "inst377";
+// Create connection
 $conn = mysqli_connect($server, $username, $password, $db);
-if (!$conn){
-	die("Connection failed: ".mysqli_connect_error());
+
+// Check connection
+if (!$conn) {
+    die("Connection failed: " . mysqli_connect_error());
 }
-echo'	
-<div class= "container">
-<div style="background: #b3e0ff !important" class ="jumbotron fixed-top">
-	<ul class="nav nav-tabs nav-justified 
-	border border-top-0 border-right-0 border-left-0 border-white"
-	style="font-size: 20px">
-	<li class="nav-item">
-		<a class="nav-link active" href="userlogged.php">Your Account</a>
-	</li>
-</ul>
-</nav>
-</div>
-
-<div class = "container">
-
-
-</div>
-
-
-
-<div class="fixed-bottom" style="padding:10px">
-	<a href="about.html"><button type="button" class="btn btn-lg btn-danger btn-block"
-	onmouseover="" style="cursor: pointer;">
-	Logout</button></a>
-</div>';
-
-mysqli_close($conn);
+echo "Connected successfully<br><br>";
 ?>
-</body>
-</html>
 
+
+
+
+
+
+
+
+
+  <!-- Main Navigation, import style sheet-->
+  <nav class="navbar navbar-expand-sm navbar-dark fixed-top">
+   <a class="navbar-brand" href=>
+     <img src="logo.svg" alt="Logo" style="width:50px;">
+  </a>
+  <ul class="navbar-nav">
+     <li class="nav-item">
+      <a class="nav-link" href="#home">HOME</a>
+   </li> 
+   <li class="nav-item">
+      <a class="nav-link" href="#login">ACCOUNT</a>
+   </li>
+   <li class="nav-item">
+      <a class="nav-link" href="#about">ABOUT</a>
+   </li>
+  
+
+</nav>
+
+
+<!-- HOME PAGE-->
+<div id="home" class="sections">
+
+
+   <h1> HOME </h1>
+
+   <input type="text" id="building_name" placeholder="Enter building name"/>
+   <br><b>Ex: </b><i>Mckeldin, Stamp</i><br/>
+
+   <!-- Search Suggestions is displayed here -->
+   <div id="Suggestions"></div>
+
+
+</div>
+
+<!-- USER ACCOUNT PAGE -->
+
+<div id="login" class="sections">
+
+											<!-- maybe add user name dynamically-->
+
+   <h2>Hello! Stay Hydrated</h2>
+
+   <!-- LOGIN FORM -->
+
+   <div id="userArea">
+
+
+
+   </div>
+</div>
+
+
+
+<!-- ABOUT PAGE -->
+
+<div id ="about" class="sections">
+   <h1> ABOUT </h1>
+   <h3> <img src="logo.svg" alt="Logo" style="width:40px"> What is Tapfinder</h3> </br>
+   <p> 
+      TapFinder is dynamic web application that helps locate water filling stations.</br>
+      TapFinder is focused for University of Maryland, College Park (UMCP)</br>
+      We built this system to help users find filtered water stations around UMD, CP</br>
+   </p>
+   <h4>Ideal Scenario</h4>
+   <ul>
+      <li>Thirsty student is walking to class with an empty bottle</li>
+      <li>Student opens the website and types name of building thats on the way to his/her class.</li>
+      <li>Student finds the location of water filling station, and pops in the building for quick refill</li>
+      <li>Student is hydrated and is on the way to class</li>
+
+   </ul>
+   <h4>Overarching goals</h4>
+   <p>Our overarching goal is to help solve the issue of dehydration. Often times student may be so invested in their work, schedule, exams etc. that they do not hydrate properly. This can affect students physical health and academic performance. By building a system to find location of a water source, we are striving to ultimately help improve the health of students and faculty on campus.</p>
+
+   <h4>Team</h4>
+   <ul>
+      <li>Aseem Dhakal, BSIS</li>
+      <li>Bukar Sun Aibe, BSIS</li>
+      <li>Kyle Chin, BSIS</li>
+      <li>Oni Oluwayesi, BSIS</li>
+   </ul>
+
+   <!-- Button to Open the Modal -->
+   <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal" 
+   onmouseover="" style="cursor: pointer;">
+   Show Contact Information
+</button>
+
+<!-- The Modal -->
+<div class="modal fade" id="myModal">
+   <div class="modal-dialog">
+      <div class="modal-content">
+
+         <!-- Modal Header -->
+         <div class="modal-header">
+            <h4 class="modal-title">Contact Email</h4>
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+         </div>
+
+         <!-- Modal body -->
+         <div class="modal-body">
+            contact_tapfinder@gmail.com
+         </div>
+         <div class="modal-body">
+            Please state your purpose in the subject line when you email
+         </div>
+
+         <!-- Modal footer -->
+         <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+         </div>
+
+      </div>
+   </div>
+</div>
+
+</div>
+</div>
+
+<!-- about page content goes in here, import style sheet-->
+
+</body>
