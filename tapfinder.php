@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 
 <html>
- 
+
 <head>
    <title>Tap Finder</title>
-      <meta charset="utf-8">
+   <meta charset="utf-8">
    <meta name="viewport" content="width=device-width, initial-scale=1">
    <!-- Latest compiled and minified CSS -->
    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
@@ -14,55 +14,57 @@
    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.6/umd/popper.min.js"></script>
    <!-- Latest compiled JavaScript -->
    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
-
- 
    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
- 
-	<!-- for making ajax request-->
+   <!-- for making ajax request-->
    <script type="text/javascript" src="js/liveSearch.js"></script>
-
-	<!-- JQuery smooth scroll for SPA-->
- 	<script type="text/javascript" src="smoothScroll.js"></script>
-
+   <!-- JQuery smooth scroll for SPA-->
+   <script type="text/javascript" src="smoothScroll.js"></script>
    <!-- for CSS file. -->
-   <link rel="stylesheet" type="text/css" href="search.css">
-
-   
+   <link rel="stylesheet" type="text/css" href="tapfinder.css">   
 </head>
- 
-<body>
- 
 
-<!-- Search box. -->
+<!-- AUTOMATIC PAGE SCROLL WITH CLICK -->
+<body data-spy="scroll" data-target=".navbar" data-offset="50">
+
+
+  <!-- Main Navigation, import style sheet-->
+  <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
+   <a class="navbar-brand" href=>
+     <img src="logo.svg" alt="Logo" style="width:50px;">
+  </a>
+  <ul class="navbar-nav">
+     <li class="nav-item">
+      <a class="nav-link" href="#home">HOME</a>
+   </li>
+   <li class="nav-item">
+      <a class="nav-link" href="#about">ABOUT</a>
+   </li>
+   <li class="nav-item">
+      <a class="nav-link" href="#login">LOGIN</a>
+   </li>
+
+</nav>
+
+
+<!-- HOME PAGE-->
+<div id="home" class="sections">
+
+
+   <h1> HOME </h1>
 
    <input type="text" id="building_name" placeholder="Enter building name"/>
- 
    <br><b>Ex: </b><i>Mckeldin, Stamp</i><br/>
- 
+
    <!-- Search Suggestions is displayed here -->
    <div id="Suggestions"></div>
- 
- <!-- This is an attempt to make this a Single Page Application -->
 
 
- 	<!-- Main Navigation, import style sheet-->
- 	<div id="main-nav">
- 		<ul>
- 			<li><a href="#home">Home</a></li>
- 			<li><a href="#about">About</a></li>
- 			<li><a href="#admin">Admin</a></li> 			
- 		</ul>
- 	</div>
+</div>
 
-	<!-- home page content goes in here, import style sheet-->
- 	<div id="home_pg">
- 		<a id="home_lnk"></a>	
- 		Home content goes in here
- 	</div>
+<!-- ABOUT PAGE -->
 
- 	<!-- about page content goes in here, import style sheet-->
- 	
-<div class ="container p-5" style="background-color: white; border:1px solid black">
+<div id ="about" class="sections">
+   <h1> ABOUT </h1>
    <h3> <img src="logo.svg" alt="Logo" style="width:40px"> TapFinder</h3> </br>
    <p> 
       TapFinder is focused for University of Maryland, College Park (UMCP)</br>
@@ -90,45 +92,44 @@
    <!-- Button to Open the Modal -->
    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal" 
    onmouseover="" style="cursor: pointer;">
-      Show Contact Information
-   </button>
+   Show Contact Information
+</button>
 
-   <!-- The Modal -->
-   <div class="modal fade" id="myModal">
-      <div class="modal-dialog">
-         <div class="modal-content">
+<!-- The Modal -->
+<div class="modal fade" id="myModal">
+   <div class="modal-dialog">
+      <div class="modal-content">
 
-            <!-- Modal Header -->
-            <div class="modal-header">
-               <h4 class="modal-title">Contact Email</h4>
-               <button type="button" class="close" data-dismiss="modal">&times;</button>
-            </div>
-
-            <!-- Modal body -->
-            <div class="modal-body">
-               contact_tapfinder@gmail.com
-            </div>
-            <div class="modal-body">
-               Please state your purpose in the subject line
-            </div>
-
-            <!-- Modal footer -->
-            <div class="modal-footer">
-               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            </div>
-
+         <!-- Modal Header -->
+         <div class="modal-header">
+            <h4 class="modal-title">Contact Email</h4>
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
          </div>
+
+         <!-- Modal body -->
+         <div class="modal-body">
+            contact_tapfinder@gmail.com
+         </div>
+         <div class="modal-body">
+            Please state your purpose in the subject line
+         </div>
+
+         <!-- Modal footer -->
+         <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+         </div>
+
       </div>
    </div>
+</div>
 
 </div>
- 	</div>
+</div>
 
- 	<!-- about page content goes in here, import style sheet-->
- 	<div id="admin_pg">
- 		<a id="admin_lnk"></a>	
- 		Admin content goes in here
- 	</div>
+<!-- about page content goes in here, import style sheet-->
+<div id="login" class="sections">
+   <h1>LOGIN</h1>
+</div>
 
 </body>
 

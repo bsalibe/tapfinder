@@ -80,7 +80,7 @@ DROP TABLE IF EXISTS `room`;
 CREATE TABLE `room` (
   `room_id` int(11) NOT NULL,
   `room_description` varchar(100) DEFAULT NULL,
-  `building_id (FK)` int(11) DEFAULT NULL,
+  `building_id` int(11) DEFAULT NULL,
   `room_number` int(11) DEFAULT NULL,
   PRIMARY KEY (`room_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;

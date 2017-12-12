@@ -1,0 +1,18 @@
+#home {
+	padding-top: 100px;
+}
+
+.sections{
+padding: 10px;
+	margin: 20px;
+}
+
+.navbar-nav > li{
+  padding-left:40px;
+  padding-right:40px;
+}
+
+h1{
+	text-align: center;
+}
+
