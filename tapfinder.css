@@ -10,7 +10,11 @@
 #login {
 	padding-top: 100px;
 	background-color: #D4F4F9;
-	height: 100vh;
+}
+#account {
+	padding-top: 100px;
+	background-color: #D4F4F9;
+	padding-bottom: 100px;
 }
 
 .sections{
@@ -56,6 +60,10 @@ h2{
 	margin-right: 10%
 }
 
+#buildingList{
+border-bottom: 2px solid black;
+}
+
 label{
 	font-weight: bold;
 	font-size: 20px;
@@ -63,5 +71,11 @@ label{
 
 .navbar{
 	background-color: #0E407D;
+}
+
+#tableHead{
+	font-weight: bolder;
+	border-bottom:4px solid black;
+	margin-bottom: 10px;
 }
 
