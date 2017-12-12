@@ -69,6 +69,11 @@
 		<div id="account" class="sections">
 
 			<h1>ACCOUNT</h1>
+
+			<form>
+			<button type="submit" class="btn btn-success">Add Building</button>
+			</form>
+
 			<?php
 
 			echo "<h2>Hello! Stay Hydrated</h2>";
@@ -86,7 +91,7 @@
 				die("Connection failed: " . mysqli_connect_error());
 			}
 //echo "Data Retrieved<br><br>";
-			echo "<h3>SAVED BUILDINGS</h3>";?>
+			echo "<h4>SAVED BUILDINGS</h4>";?>
 
 			<div class="row">
 				<div  id="tableHead" class="col-sm-1">Building ID</div>
@@ -124,8 +129,9 @@
 					<div id = \"buildingList\" class=\"col-sm-3\">". $row['room_description'] ."</div>
 					<div id = \"buildingList\" class=\"col-sm-1\">". $row['room_number'] ."</div>
 					<div class=\"col-sm-2\">
-						<button type=\"button\" class=\"btn btn-danger\">Delete Building</button>
-			
+						<form>
+						<button type=\"submit\" class=\"btn btn-danger\">Delete Building</button>
+						</form>
 					<div class=\"col-sm-2\"></div>
 					</div>";
 

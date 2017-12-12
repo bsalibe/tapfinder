@@ -41,6 +41,11 @@ h2{
 	font-weight: bolder;
 }
 
+h4{
+	padding-top: 30px;
+	padding-bottom: 30px;
+	text-align: center;
+}
 #building_name{
 	width: 100%;
 	height: 70px;
