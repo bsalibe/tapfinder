@@ -48,7 +48,7 @@
 				if (($result) AND mysqli_num_rows($result) > 0){
 					//echo "You are logged in";
 					$answer = mysqli_fetch_assoc($result);
-					$GLOBALS ['userId'] = $answer['account_id'];
+					$GLOBALS ['userId'] = $answer['user_id'];
 				} else{
 					//echo "EITHER";
 					//echo "Error: " .$sql. "<br>" . mysqli_error($conn);
@@ -63,7 +63,7 @@
 				}
 			}
 
-			$sql = "select account_id from accounts where email = '".$receiveEmail."'
+			$sql = "select user_id from user where email = '".$receiveEmail."'
 			AND password='" .$receivePassword."'";
 			echo 
 			query_to_db($conn, $sql);?>
