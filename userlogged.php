@@ -27,46 +27,51 @@
 <!-- AUTOMATIC PAGE SCROLL WITH CLICK -->
 <body data-spy="scroll" data-target=".navbar" data-offset="50">
 
-			<?php
-			require "config.php";
+	<?php
+	require "config.php";
 
-			echo "<h2>Hello! Stay Hydrated</h2>";
+	echo "<h2>Hello! Stay Hydrated</h2>";
 
 // Create connection
-			$conn = mysqli_connect($server, $username, $password, $db);
+	$conn = mysqli_connect($server, $username, $password, $db);
 // Check connection
-			if (!$conn) {
-				die("Connection failed: " . mysqli_connect_error());
-			}
-			$receiveEmail = $_POST["email"];
-			$receivePassword = $_POST["password"];
+	if (!$conn) {
+		die("Connection failed: " . mysqli_connect_error());
+	}
+	$receiveEmail = $_POST["email"];
+	$receivePassword = $_POST["password"];
+	$receiveDelete =$_POST["deleteId"];
 
-    		$userId;
-			function query_to_db($conn, $sql){
-				$result = mysqli_query($conn, $sql);
+	$userId;
+	$deleteId;
 
-				if (($result) AND mysqli_num_rows($result) > 0){
+
+	function query_to_db($conn, $sql){
+		$result = mysqli_query($conn, $sql);
+
+		if (($result) AND mysqli_num_rows($result) > 0){
 					//echo "You are logged in";
-					$answer = mysqli_fetch_assoc($result);
-					$GLOBALS ['userId'] = $answer['user_id'];
-				} else{
+			$answer = mysqli_fetch_assoc($result);
+			$GLOBALS ['userId'] = $answer['user_id'];
+		} else{
 					//echo "EITHER";
 					//echo "Error: " .$sql. "<br>" . mysqli_error($conn);
-					echo "<h3 style='text-align: center; color: red; padding: 10px;'>
-					Oops! Your Email, Password, or both were typed incorrectly</h3>";
-					echo "<form action =\"tapfinder.php\">
-					<button type=\"submit\" style='margin-left:43%; margin-top: 10%;
-					padding: 10px; border-radius: 10px; background-color: green;'> 
-					CLICK TO GO BACK</button></form>";
-					die;
+			echo "<h3 style='text-align: center; color: red; padding: 10px;'>
+			Oops! Your Email, Password, or both were typed incorrectly</h3>";
+			echo "<form action =\"tapfinder.php\">
+			<button type=\"submit\" style='margin-left:43%; margin-top: 10%;
+			padding: 10px; border-radius: 10px; background-color: green;'> 
+			CLICK TO GO BACK</button></form>";
+			die;
 
-				}
-			}
+		}
+	}
 
-			$sql = "select user_id from user where email = '".$receiveEmail."'
-			AND password='" .$receivePassword."'";
-			echo 
-			query_to_db($conn, $sql);?>
+
+	$sql = "select user_id from user where email = '".$receiveEmail."'
+	AND password='" .$receivePassword."'";
+	echo 
+	query_to_db($conn, $sql);?>
 
 	<!-- Main Navigation, import style sheet-->
 	<nav class="navbar navbar-expand-sm navbar-dark fixed-top">
@@ -109,9 +114,33 @@
 
 			<h1>ACCOUNT</h1>
 
-			<form>
-			<button type="submit" class="btn btn-success">Add Building</button>
-			</form>
+			<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+			Add Building
+			</button>
+
+			<div class="modal fade" id="myModal">
+				<div class="modal-dialog">
+					<div class="modal-content">
+
+						<!-- Modal Header -->
+						<div class="modal-header">
+							<h4 class="modal-title">Modal Heading</h4>
+							<button type="button" class="close" data-dismiss="modal">&times;</button>
+						</div>
+
+						<!-- Modal body -->
+						<div class="modal-body">
+							Modal body..
+						</div>
+
+						<!-- Modal footer -->
+						<div class="modal-footer">
+							<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+						</div>
+
+					</div>
+				</div>
+			</div>
 
 
 			<?php
@@ -121,9 +150,9 @@
 
 			<div class="row">
 				<div  id="tableHead" class="col-sm-1">Building ID</div>
-				<div  id="tableHead" class="col-sm-3">Building Name</div>
+				<div  id="tableHead" class="col-sm-2">Building Name</div>
 				<div  id="tableHead" class="col-sm-3">Room Description</div>
-				<div  id="tableHead" class="col-sm-1">Room Number</div>
+				<div  id="tableHead" class="col-sm-3">Room Number</div>
 				<div  id="tableHead" class="col-sm-2">Delete Building</div>
 			</div>
 
@@ -132,16 +161,25 @@
 			<?php
 
 //SQL CODES
+			$sqlDelete = "Delete from user_save where (user_id = '".$userId."' AND building_id = '".$receiveDelete."');";
+			if (!isset($receiveDelete)){
+
+			} else {
+				$delete = mysqli_query($conn, $sqlDelete);
+				if ($delete) {
+					echo "Record deleted successfully";
+				} else {
+					echo "Error deleting record: " . $conn->error;
+				}
+			}
+
+
+
+
 			$sql = "Select room.building_id, building_name, room_description, room_number FROM
-			room JOIN buildings JOIN user
-			ON (room.building_id = buildings.building_id) AND 
-			((room.building_id = user.saved_one) OR
-			(room.building_id = user.saved_two) OR
-			(room.building_id = user.saved_three) OR
-			(room.building_id = user.saved_four) OR
-			(room.building_id = user.saved_five)
-			)
-			WHERE user.user_id='".$userId."';";
+			room JOIN buildings JOIN user_save
+			ON (room.building_id = buildings.building_id) AND (user_save.building_id = buildings.building_id)
+			WHERE user_id='".$userId."';";
 			$result = mysqli_query($conn, $sql);
 			$row  = mysqli_fetch_assoc($result);
 
@@ -152,22 +190,29 @@
 					echo 
 					"<div class=\"row\">
 					<div id = \"buildingList\" class=\"col-sm-1\">". $row['building_id'] ."</div> 
-					<div id = \"buildingList\" class=\"col-sm-3\">". $row['building_name'] ."</div>
+					<div id = \"buildingList\" class=\"col-sm-2\">". $row['building_name'] ."</div>
 					<div id = \"buildingList\" class=\"col-sm-3\">". $row['room_description'] ."</div>
 					<div id = \"buildingList\" class=\"col-sm-1\">". $row['room_number'] ."</div>
-					<div class=\"col-sm-2\">
-						<form>
-						<button type=\"submit\" class=\"btn btn-danger\">Delete Building</button>
-						</form>
-					<div class=\"col-sm-2\"></div>
-					</div>";
+					<div class=\"col-sm-3\"> 
+						<form method=\"POST\" action=\"userlogged.php\">
 
-				echo "</div><br>";
-			}
-		} else {
-			echo "No results..";
-		}
-		echo "</div>";
+							<input type=\"hidden\" name=\"email\" value=\"".$receiveEmail."\">
+							<input type=\"hidden\" name=\"password\" value=\"".$receivePassword."\">
+							<input type=\"hidden\" name=\"deleteId\" value=\"".$row['building_id']."\">
+							<button id=\"delete\" class=\"btn btn-danger\">
+								Delete Building</button>
+							</form>
+						</div>
+
+						<div class=\"col-sm-2\">
+						</div>";
+
+						echo "</div><br>";
+					}
+				} else {
+					echo "No results..";
+				}
+				echo "</div>";
 /*foreach ($row as &$value) {
 	echo $value. "<br>";
 }*/

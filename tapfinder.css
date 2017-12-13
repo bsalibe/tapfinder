@@ -90,3 +90,8 @@ label{
 	background-color: red;
 }
 
+#hidden{
+	display: none;
+	size: 0px;
+}
+
