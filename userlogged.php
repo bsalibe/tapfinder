@@ -27,12 +27,51 @@
 <!-- AUTOMATIC PAGE SCROLL WITH CLICK -->
 <body data-spy="scroll" data-target=".navbar" data-offset="50">
 
+			<?php
+			require "config.php";
 
+			echo "<h2>Hello! Stay Hydrated</h2>";
+
+// Create connection
+			$conn = mysqli_connect($server, $username, $password, $db);
+// Check connection
+			if (!$conn) {
+				die("Connection failed: " . mysqli_connect_error());
+			}
+			$receiveEmail = $_POST["email"];
+			$receivePassword = $_POST["password"];
+
+    		$userId;
+			function query_to_db($conn, $sql){
+				$result = mysqli_query($conn, $sql);
+
+				if (($result) AND mysqli_num_rows($result) > 0){
+					//echo "You are logged in";
+					$answer = mysqli_fetch_assoc($result);
+					$GLOBALS ['userId'] = $answer['account_id'];
+				} else{
+					//echo "EITHER";
+					//echo "Error: " .$sql. "<br>" . mysqli_error($conn);
+					echo "<h3 style='text-align: center; color: red; padding: 10px;'>
+					Oops! Your Email, Password, or both were typed incorrectly</h3>";
+					echo "<form action =\"tapfinder.php\">
+					<button type=\"submit\" style='margin-left:43%; margin-top: 10%;
+					padding: 10px; border-radius: 10px; background-color: green;'> 
+					CLICK TO GO BACK</button></form>";
+					die;
+
+				}
+			}
+
+			$sql = "select account_id from accounts where email = '".$receiveEmail."'
+			AND password='" .$receivePassword."'";
+			echo 
+			query_to_db($conn, $sql);?>
 
 	<!-- Main Navigation, import style sheet-->
 	<nav class="navbar navbar-expand-sm navbar-dark fixed-top">
-		<a class="navbar-brand" href=>
-			<img src="logo.svg" alt="Logo" style="width:50px;">
+		<a class="navbar-brand" href="tapfinder.php">
+			<img  id ="logout" alt="LogOut" style="background-color: red; padding: 5px">
 		</a>
 		<ul class="navbar-nav">
 			<li class="nav-item">
@@ -74,22 +113,9 @@
 			<button type="submit" class="btn btn-success">Add Building</button>
 			</form>
 
+
 			<?php
 
-			echo "<h2>Hello! Stay Hydrated</h2>";
-
-			$server = "localhost";
-			$username = "root";
-			$password = "root";
-			$db = "inst377";
-			
-// Create connection
-			$conn = mysqli_connect($server, $username, $password, $db);
-
-// Check connection
-			if (!$conn) {
-				die("Connection failed: " . mysqli_connect_error());
-			}
 //echo "Data Retrieved<br><br>";
 			echo "<h4>SAVED BUILDINGS</h4>";?>
 
@@ -104,6 +130,7 @@
 
 
 			<?php
+
 //SQL CODES
 			$sql = "Select room.building_id, building_name, room_description, room_number FROM
 			room JOIN buildings JOIN user
@@ -114,7 +141,7 @@
 			(room.building_id = user.saved_four) OR
 			(room.building_id = user.saved_five)
 			)
-			WHERE user.user_id=2;";
+			WHERE user.user_id='".$userId."';";
 			$result = mysqli_query($conn, $sql);
 			$row  = mysqli_fetch_assoc($result);
 

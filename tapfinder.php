@@ -20,20 +20,40 @@
    <!-- JQuery smooth scroll for SPA-->
    <script type="text/javascript" src="smoothScroll.js"></script>
    <!-- for CSS file. -->
-   <link rel="stylesheet" type="text/css" href="tapfinder.css">   
+   <link rel="stylesheet" type="text/css" href="tapfinder.css">  
+
+   <!-- LOG IN SCRIPT-->
+
+   <script>
+   $(document).ready(function(){}
+      $("#submitlogin").click(function(){
+         user = $('input[name = "email"]').val();
+         password = $('input[name = "password"]').val();
+
+         $.post("userlogged.php"),
+         {
+            email: email,
+            password: password
+         }
+      });
+   });
+</script>
+
+
+
 </head>
 
 <!-- AUTOMATIC PAGE SCROLL WITH CLICK -->
 <body data-spy="scroll" data-target=".navbar" data-offset="50">
 
 
-  <!-- Main Navigation, import style sheet-->
-  <nav class="navbar navbar-expand-sm navbar-dark fixed-top">
+ <!-- Main Navigation, import style sheet-->
+ <nav class="navbar navbar-expand-sm navbar-dark fixed-top">
    <a class="navbar-brand" href=>
-     <img src="logo.svg" alt="Logo" style="width:50px;">
-  </a>
-  <ul class="navbar-nav">
-     <li class="nav-item">
+    <img src="logo.svg" alt="Logo" style="width:50px;">
+ </a>
+ <ul class="navbar-nav">
+    <li class="nav-item">
       <a class="nav-link" href="#home">HOME</a>
    </li>
    <li class="nav-item">
@@ -132,17 +152,20 @@
    <h1>LOGIN</h1>
 
    <!-- LOGIN FORM -->
+   <form action = "userlogged.php" method="POST" id = "login">
+      <div id="loginForm">
+         <div class="form-group">
+            <label for="usr">Email:</label>
+            <input type="text" class="form-control" id="usr" name = "email" >
+         </div>
+         <div class="form-group">
+            <label for="pwd">Password:</label>
+            <input type="password" class="form-control" id = "pwd" name = "password"> 
+         </div>
 
-   <div id="loginForm">
-      <div class="form-group">
-         <label for="usr">Email:</label>
-         <input type="text" class="form-control" id="usr">
+         <button id="submitlogin"> Log In </button>
       </div>
-      <div class="form-group">
-         <label for="pwd">Password:</label>
-         <input type="password" class="form-control" id="pwd">
-      </div>
-   </div>
+   </form>
 </div>
 
 </body>
