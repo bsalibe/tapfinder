@@ -69,7 +69,7 @@ function query_to_db($conn, $sql){
 	}
 }
 //TEST IF EMAIL IS ALREADY IN USE
-$sqlEmail = "select account_id from user where email = '".$receiveEmail."';";
+$sqlEmail = "select user_id from user where email = '".$receiveEmail."';";
 query_to_test($conn, $sqlEmail);
 
 //INSERT QUERY

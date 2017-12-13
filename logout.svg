@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="80" height="35" viewBox="0 0 80 35">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #900;
+        stroke: #900;
+        stroke-width: 2px;
+        fill-rule: evenodd;
+      }
+
+      .cls-2 {
+        font-size: 20px;
+        fill: #fff;
+        text-anchor: middle;
+        font-family: "Bradley Hand";
+        font-weight: 700;
+      }
+    </style>
+  </defs>
+  <path class="cls-1" d="M-0.49-.646H80.354V35.285H-0.49V-0.646Z"/>
+  <text id="Log_Out" data-name="Log Out" class="cls-2" transform="translate(39.013 22.215) scale(0.84 0.967)"><tspan x="0">Log Out</tspan></text>
+</svg>

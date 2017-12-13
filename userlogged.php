@@ -76,7 +76,7 @@
 	<!-- Main Navigation, import style sheet-->
 	<nav class="navbar navbar-expand-sm navbar-dark fixed-top">
 		<a class="navbar-brand" href="tapfinder.php">
-			<img  id ="logout" alt="LogOut" style="background-color: red; padding: 5px">
+			<img  src ="logout.svg" alt="LogOut" style="background-color: red; padding: 5px">
 		</a>
 		<ul class="navbar-nav">
 			<li class="nav-item">
@@ -118,6 +118,7 @@
 			Add Building
 			</button>
 
+			<form action = "add.php" method ="POST">
 			<div class="modal fade" id="myModal">
 				<div class="modal-dialog">
 					<div class="modal-content">
@@ -141,6 +142,7 @@
 					</div>
 				</div>
 			</div>
+			</form>
 
 
 			<?php
