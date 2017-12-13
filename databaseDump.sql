@@ -1,5 +1,3 @@
-CREATE DATABASE  IF NOT EXISTS `inst377` /*!40100 DEFAULT CHARACTER SET utf8 */;
-USE `inst377`;
 -- MySQL dump 10.13  Distrib 5.7.12, for osx10.9 (x86_64)
 --
 -- Host: 127.0.0.1    Database: inst377
@@ -84,11 +82,6 @@ CREATE TABLE `user` (
   `password` varchar(45) DEFAULT NULL,
   `user_first_name` varchar(45) DEFAULT NULL,
   `user_last_name` varchar(45) DEFAULT NULL,
-  `saved_one` varchar(10) DEFAULT NULL,
-  `saved_two` varchar(10) DEFAULT NULL,
-  `saved_three` varchar(10) DEFAULT NULL,
-  `saved_four` varchar(10) DEFAULT NULL,
-  `saved_five` varchar(10) DEFAULT NULL,
   PRIMARY KEY (`user_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -99,7 +92,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (1,'chris@gmail.com','password','chris','hill','3','4','8','14',NULL),(2,'tom@yahoo.com','password','tom','jackson','15','17','26','34','35'),(3,'jill@hotmail.com','password','jill','jolten','36','37',NULL,NULL,NULL),(4,'sun@yahoo.com','password','sun','alibe','38','39',NULL,NULL,NULL),(5,'kevin@gmail.com','password','kevin','woo','42','44',NULL,NULL,NULL),(6,'kyle@terpmail.umd.com','password','kyle','chin','46',NULL,NULL,NULL,NULL),(7,'aseem@hotmail.com','password','aseem','dhakal','51','52',NULL,NULL,NULL),(8,'oni@yahoo.com','password','justin','evans','59','60',NULL,NULL,NULL),(9,'tiffany@gmail.com','password','oni','olu','61','62',NULL,NULL,NULL),(10,'fake@terpmail.com','password','tiffany','kan','63','64',NULL,NULL,NULL),(11,'testmanual@gmail.com',NULL,'fake','name','65',NULL,NULL,NULL,NULL),(16,'testmanual@gmail.com','password','testName','TestPass',NULL,NULL,NULL,NULL,NULL),(17,'newEmail@gmail.com','hateFixingBugs','tester','tester',NULL,NULL,NULL,NULL,NULL);
+INSERT INTO `user` VALUES (1,'chris@gmail.com','password','chris','hill'),(2,'tom@yahoo.com','password','tom','jackson'),(3,'jill@hotmail.com','password','jill','jolten'),(4,'sun@yahoo.com','password','sun','alibe'),(5,'kevin@gmail.com','password','kevin','woo'),(6,'kyle@terpmail.umd.com','password','kyle','chin'),(7,'aseem@hotmail.com','password','aseem','dhakal'),(8,'oni@yahoo.com','password','justin','evans'),(9,'tiffany@gmail.com','password','oni','olu'),(10,'fake@terpmail.com','password','tiffany','kan'),(11,'testmanual@gmail.com',NULL,'fake','name'),(16,'testmanual@gmail.com','password','testName','TestPass'),(17,'newEmail@gmail.com','hateFixingBugs','tester','tester');
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -141,4 +134,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-12-13  2:54:05
+-- Dump completed on 2017-12-13  2:56:45
