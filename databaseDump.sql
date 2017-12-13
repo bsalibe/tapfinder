@@ -1,3 +1,5 @@
+CREATE DATABASE  IF NOT EXISTS `inst377` /*!40100 DEFAULT CHARACTER SET utf8 */;
+USE `inst377`;
 -- MySQL dump 10.13  Distrib 5.7.12, for osx10.9 (x86_64)
 --
 -- Host: 127.0.0.1    Database: inst377
@@ -14,6 +16,31 @@
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `admin`
+--
+
+DROP TABLE IF EXISTS `admin`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `admin` (
+  `admin_id` int(11) NOT NULL AUTO_INCREMENT,
+  `admin_email` varchar(45) NOT NULL,
+  `admin_password` varchar(45) NOT NULL,
+  PRIMARY KEY (`admin_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `admin`
+--
+
+LOCK TABLES `admin` WRITE;
+/*!40000 ALTER TABLE `admin` DISABLE KEYS */;
+INSERT INTO `admin` VALUES (1,'Illuminati@admin.com','ihavethepower');
+/*!40000 ALTER TABLE `admin` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `buildings`
@@ -83,7 +110,7 @@ CREATE TABLE `user` (
   `user_first_name` varchar(45) DEFAULT NULL,
   `user_last_name` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -112,7 +139,7 @@ CREATE TABLE `user_save` (
   KEY `FK_building_id` (`building_id`),
   CONSTRAINT `FK_building_id` FOREIGN KEY (`building_id`) REFERENCES `buildings` (`building_id`),
   CONSTRAINT `FK_user_id` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=66 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -121,7 +148,7 @@ CREATE TABLE `user_save` (
 
 LOCK TABLES `user_save` WRITE;
 /*!40000 ALTER TABLE `user_save` DISABLE KEYS */;
-INSERT INTO `user_save` VALUES (3,1,8),(5,2,15),(6,2,17),(7,2,26),(8,2,34),(9,2,35),(10,3,36),(11,3,37),(12,4,38),(13,4,39),(14,5,42),(15,5,44),(16,6,46),(17,7,51),(18,7,52),(19,8,59),(20,8,60),(21,9,61),(22,9,62),(24,10,64),(25,11,65);
+INSERT INTO `user_save` VALUES (3,1,8),(5,2,15),(6,2,17),(7,2,26),(8,2,34),(9,2,35),(10,3,36),(11,3,37),(12,4,38),(13,4,39),(14,5,42),(15,5,44),(16,6,46),(17,7,51),(19,8,59),(20,8,60),(21,9,61),(22,9,62),(24,10,64),(25,11,65),(56,1,254),(57,2,255),(58,3,256),(59,4,258),(60,3,999),(61,3,981),(62,5,144),(63,5,145),(64,6,146),(65,6,147);
 /*!40000 ALTER TABLE `user_save` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -134,4 +161,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-12-13  2:56:45
+-- Dump completed on 2017-12-13 18:31:10
