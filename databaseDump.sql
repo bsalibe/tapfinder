@@ -18,31 +18,6 @@ USE `inst377`;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `accounts`
---
-
-DROP TABLE IF EXISTS `accounts`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `accounts` (
-  `account_id` int(11) NOT NULL,
-  `email` varchar(50) DEFAULT NULL,
-  `password` varchar(30) DEFAULT NULL,
-  PRIMARY KEY (`account_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `accounts`
---
-
-LOCK TABLES `accounts` WRITE;
-/*!40000 ALTER TABLE `accounts` DISABLE KEYS */;
-INSERT INTO `accounts` VALUES (1,'chris@gmail.com','password'),(2,'tom@yahoo.com','password'),(3,'jill@hotmail.com','password'),(4,'sun@yahoo.com','password'),(5,'kevin@gmail.com','password'),(6,'kyle@terpmail.umd.edu','password'),(7,'aseem@hotmail.com','password'),(8,'justin@yahoo.com','password'),(9,'oni@yahoo.com','password'),(10,'tiffany@gmail.com','password'),(11,'fake@terpmail.com','password');
-/*!40000 ALTER TABLE `accounts` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `buildings`
 --
 
@@ -104,7 +79,9 @@ DROP TABLE IF EXISTS `user`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `user` (
-  `user_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL AUTO_INCREMENT,
+  `email` varchar(45) DEFAULT NULL,
+  `password` varchar(45) DEFAULT NULL,
   `user_first_name` varchar(45) DEFAULT NULL,
   `user_last_name` varchar(45) DEFAULT NULL,
   `saved_one` varchar(10) DEFAULT NULL,
@@ -113,7 +90,7 @@ CREATE TABLE `user` (
   `saved_four` varchar(10) DEFAULT NULL,
   `saved_five` varchar(10) DEFAULT NULL,
   PRIMARY KEY (`user_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -122,7 +99,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (1,'chris','hill','3','4','8','14',NULL),(2,'tom','jackson','15','17','26','34','35'),(3,'jill','jolten','36','37',NULL,NULL,NULL),(4,'sun','alibe','38','39',NULL,NULL,NULL),(5,'kevin','woo','42','44',NULL,NULL,NULL),(6,'kyle','chin','46','48',NULL,NULL,NULL),(7,'aseem','dhakal','51','52',NULL,NULL,NULL),(8,'justin','evans','59','60',NULL,NULL,NULL),(9,'oni','olu','61','62',NULL,NULL,NULL),(10,'tiffany','kan','63','64',NULL,NULL,NULL),(11,'fake','name','65',NULL,NULL,NULL,NULL);
+INSERT INTO `user` VALUES (1,'chris@gmail.com','password','chris','hill','3','4','8','14',NULL),(2,'tom@yahoo.com','password','tom','jackson','15','17','26','34','35'),(3,'jill@hotmail.com','password','jill','jolten','36','37',NULL,NULL,NULL),(4,'sun@yahoo.com','password','sun','alibe','38','39',NULL,NULL,NULL),(5,'kevin@gmail.com','password','kevin','woo','42','44',NULL,NULL,NULL),(6,'kyle@terpmail.umd.com','password','kyle','chin','46','48',NULL,NULL,NULL),(7,'aseem@hotmail.com','password','aseem','dhakal','51','52',NULL,NULL,NULL),(8,'oni@yahoo.com','password','justin','evans','59','60',NULL,NULL,NULL),(9,'tiffany@gmail.com','password','oni','olu','61','62',NULL,NULL,NULL),(10,'fake@terpmail.com','password','tiffany','kan','63','64',NULL,NULL,NULL),(11,'testmanual@gmail.com',NULL,'fake','name','65',NULL,NULL,NULL,NULL);
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -135,4 +112,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-12-12 18:31:37
+-- Dump completed on 2017-12-12 23:33:46
