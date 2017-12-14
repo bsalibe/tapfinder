@@ -163,11 +163,11 @@
             <label for="pwd">Password:</label>
             <input type="password" class="form-control" id = "pwd" name = "password"> 
          </div>
-         <button id="submitlogin"> Log In </button> <br><br>Not Registered? Sign up with the button below!!
+         <button id="submitlogin" class="btn btn-success"> Log In </button> <br><br>Not Registered? Sign up with the button below!!
 
       </form>
       <form action = "signup.php" method ="POST">
-         <button id="signup">Sign up</button>
+         <button id="signup" class="btn btn-warning">Sign up</button>
       </form>
    </div>
 </div>

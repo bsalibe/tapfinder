@@ -38,15 +38,20 @@
 
 //SIGN UP FORM VALIDATION
 	if (!filter_var($receiveEmail, FILTER_VALIDATE_EMAIL)) {
-		echo "<h4>ERROR! NOT A VALID EMAIL</h4>"; die;
+		echo "<h4>ERROR! NOT A VALID EMAIL</h4>
+		<form action='signup.php'><h4><button class ='btn btn-warning'>Go Back to Register Page</button</h4></form>"; 
+		die;
 	}
 	if ((!preg_match("/^[a-zA-Z ]*$/",$receiveFirst)) OR (!preg_match("/^[a-zA-Z ]*$/",$receiveLast))) {
-		echo "<h4>ERROR! FIRST NAME OR LAST NAME CONTAINS NUMBERS</h4>" ; die;
+		echo "<h4>ERROR! FIRST NAME OR LAST NAME CONTAINS NUMBERS</h4> ; 
+		<form action='signup.php'><h4><button class ='btn btn-warning'>Go Back to SignUp Page</button</h4></form>"; die;
 	}
 	if((!isset($receiveFirst) || trim($receiveFirst) == '') ||
 		(!isset($receiveLast) || trim($receiveLast) == '') ||
 		(!isset($receivePassword) || trim($receivePassword) == '')){
-		echo "<h4>ERROR! SOME VALUES ARE MISSING</h4>"; die;
+		echo "<h4>ERROR! SOME VALUES ARE MISSING</h4>
+		<form action='signup.php'><h4><button class ='btn btn-warning'>Go Back to SignUp Page</button</h4></form>"; 
+		die;
 }
 
 //BASIC QUERY FUNCTION TO TEST EMAIL REUSE  		
@@ -54,7 +59,9 @@ function query_to_test($conn, $sql){
 	$result = mysqli_query($conn, $sql);
 
 	if (($result) AND mysqli_num_rows($result) > 0){
-		echo "<h4>Email has already been used to register</h4>"; die;
+		echo "<h4>Email has already been used to register</h4>
+		<form action='signup.php'><h4><button class ='btn btn-warning'>Go Back to SignUp Page</button</h4></form>";
+		die;
 	} else{
 	}
 }
@@ -63,7 +70,10 @@ function query_to_db($conn, $sql){
 	$result = mysqli_query($conn, $sql);
 
 	if ($result){
-		echo "<h4>You Registered Successfully</h4>"; die;
+		echo "<h4>You Registered Successfully</h4> <br><br>
+		<form action='tapfinder.php?#login'><h4><button>Log In Page</button</h4></form>";
+
+		die;
 	} else{
 		echo "SORRY SOMETHING WENT WRONG". $sql. mysqli_error($conn);
 	}
