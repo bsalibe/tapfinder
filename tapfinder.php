@@ -153,7 +153,7 @@
 
    <div id="loginForm">
       <!-- LOGIN FORM -->
-      <form action = "userlogged.php" method="POST" id = "login">
+      <form action = "userlogged.php" method="POST">
 
          <div class="form-group">
             <label for="usr">Email:</label>

@@ -15,10 +15,7 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.6/umd/popper.min.js"></script>
 	<!-- Latest compiled JavaScript -->
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
-	<!-- for making ajax request-->
-	<script type="text/javascript" src="js/liveSearch.js"></script>
-	<!-- JQuery smooth scroll for SPA-->
-	<script type="text/javascript" src="smoothScroll.js"></script>
+
 
 	<!-- for CSS file. -->
 
@@ -75,8 +72,25 @@
 	$sql = "select user_id from user where email = '".$receiveEmail."'
 	AND password='" .$receivePassword."'";
 	echo 
-	query_to_db($conn, $sql);?>
+	query_to_db($conn, $sql);
 
+
+
+//SQL CODES
+$sqlFindId = "Select buildings.building_id from buildings where building_name = '".$receiveBuildingName."'";
+$getId = mysqli_query($conn, $sqlFindId);
+if (mysqli_num_rows($getId) == 1){
+	while($row = mysqli_fetch_assoc($getId)) {
+		$GLOBALS['buildingId'] = $row['building_id'];
+}
+if (mysqli_num_rows (mysqli_query($conn, "Select user_id, user_save.building_id from user_save where 
+	(user_id='".$userId."' AND user_save.building_id = '".$buildingId."'")) == 0){
+$sqlAdd = "Insert into user_save(user_id, user_save.building_id)
+			Values ('".$userId."','".$buildingId."')";
+mysqli_query($conn, $sqlAdd);
+}
+}
+?>
 
 
 
@@ -187,20 +201,7 @@
 
 
 
-<?php
 
-//SQL CODES
-$sqlFindId = "Select building_id from buildings where building_name = '".$receiveBuildingName."'";
-$getId = mysqli_query($conn, $sqlFindId);
-if (mysqli_num_rows($getId) == 1){
-	while($row = mysqli_fetch_assoc($getId)) {
-		$GLOBALS['buildingId'] = $row['building_id'];
-}
-$sqlAdd = "Insert into user_save(user_id, building_id)
-			Values ('".$userId."','".$buildingId."')";
-mysqli_query($conn, $sqlAdd);
-}
-?>
 								<form  method ="POST" action = "userlogged.php">
 								<input type="hidden" name="email" value="<?php echo htmlspecialchars($receiveEmail); ?>">
 								<input type="hidden" name="password" value="<?php echo htmlspecialchars($receivePassword); ?>">
@@ -259,7 +260,7 @@ if (!isset($receiveDelete)){
 
 
 
-$sql = "Select room.building_id, building_name, room_description, room_number FROM
+$sql = "Select room.building_id, buildings.building_name, room.room_description, room.room_number FROM
 room JOIN buildings JOIN user_save
 ON (room.building_id = buildings.building_id) AND (user_save.building_id = buildings.building_id)
 WHERE user_id='".$userId."';";
@@ -267,7 +268,7 @@ $result = mysqli_query($conn, $sql);
 $row  = mysqli_fetch_assoc($result);
 
 echo "<div id =\"savedBuildings\">";
-if (mysqli_num_rows($result) > 0) {   
+if (mysqli_num_rows($result)) {   
 	while($row = mysqli_fetch_assoc($result)) {
 					//echo "<div id = \"buildingList\">";  don't forget to add the closing div for this
 		echo 
