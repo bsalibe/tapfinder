@@ -10,18 +10,20 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
 	<!-- jQuery library -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.1/themes/base/minified/jquery-ui.min.css" type="text/css" /> 
 	<!-- Popper JS -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.6/umd/popper.min.js"></script>
 	<!-- Latest compiled JavaScript -->
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
-	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
 	<!-- for making ajax request-->
 	<script type="text/javascript" src="js/liveSearch.js"></script>
 	<!-- JQuery smooth scroll for SPA-->
 	<script type="text/javascript" src="smoothScroll.js"></script>
-	<!-- for CSS file. -->
-	<link rel="stylesheet" type="text/css" href="tapfinder.css"> 
 
+	<!-- for CSS file. -->
+
+	<link rel="stylesheet" type="text/css" href="tapfinder.css"> 
+	
 </head>
 
 <!-- AUTOMATIC PAGE SCROLL WITH CLICK -->
@@ -41,6 +43,8 @@
 	$receiveEmail = $_POST["email"];
 	$receivePassword = $_POST["password"];
 	$receiveDelete =$_POST["deleteId"];
+	$receiveBuildingName = $_POST["building_name"];
+	$buildingId;
 
 	$userId;
 	$deleteId;
@@ -73,7 +77,21 @@
 	echo 
 	query_to_db($conn, $sql);?>
 
-	<!-- Main Navigation, import style sheet-->
+
+
+
+
+
+
+
+
+	<!--                              NAVIGATION BAR                          -->
+
+
+
+
+
+
 	<nav class="navbar navbar-expand-sm navbar-dark fixed-top">
 		<a class="navbar-brand" href="tapfinder.php">
 			<img  src ="logout.svg" alt="LogOut" style="background-color: red; padding: 5px">
@@ -93,9 +111,18 @@
 		</nav>
 
 
-		<!-- HOME PAGE-->
-		<div id="home" class="sections">
 
+
+
+		<!--                               HOME PAGE                            -->
+
+
+
+
+
+
+
+		<div id="home" class="sections">
 
 			<h1> HOME </h1>
 
@@ -108,134 +135,194 @@
 
 		</div>
 
-		<!-- USER ACCOUNT PAGE -->
+
+
+
+
+
+
+
+
+
+
+		<!--                             USER ACCOUNT PAGE                           -->
+
+
+
+
+
+		<!-- User can add building in their account -->
+
+
+		<script>
+			function hideAdd() {
+				var x = document.getElementById("myModal");
+				if (x.style.display === "none") {
+					x.style.display = "block";
+				} else {
+					x.style.display = "none";
+				}
+			}
+			function changeText(){
+				var elem = document.getElementById("addButton");
+				if (elem.value=="Add Building") elem.value = "Cancel";
+				else elem.value = "Add Building";
+			}
+		</script>
 
 		<div id="account" class="sections">
 
 			<h1>ACCOUNT</h1>
 
-			<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
-			Add Building
-			</button>
+			<input type="button" onclick="hideAdd(), changeText()" type="button" class="btn btn-primary" id="addButton" value="Add Building"></button>
 
-			<form action = "add.php" method ="POST">
-			<div class="modal fade" id="myModal">
-				<div class="modal-dialog">
-					<div class="modal-content">
-
-						<!-- Modal Header -->
-						<div class="modal-header">
-							<h4 class="modal-title">Modal Heading</h4>
-							<button type="button" class="close" data-dismiss="modal">&times;</button>
-						</div>
-
-						<!-- Modal body -->
-						<div class="modal-body">
-							Modal body..
-						</div>
-
-						<!-- Modal footer -->
-						<div class="modal-footer">
-							<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-						</div>
-
-					</div>
-				</div>
-			</div>
-			</form>
-
-
-			<?php
-
-//echo "Data Retrieved<br><br>";
-			echo "<h4>SAVED BUILDINGS</h4>";?>
-
-			<div class="row">
-				<div  id="tableHead" class="col-sm-1">Building ID</div>
-				<div  id="tableHead" class="col-sm-2">Building Name</div>
-				<div  id="tableHead" class="col-sm-3">Room Description</div>
-				<div  id="tableHead" class="col-sm-3">Room Number</div>
-				<div  id="tableHead" class="col-sm-2">Delete Building</div>
-			</div>
+			<!-- form -->
+			<div id="myModal" style = "display: none;">
+				
+							<h3 class="modal-title">Add Building</h3><br>
+							<button onclick = "hideAdd(), changeText()" type="button" class="close" value ="CANCEL"></button>
+							<br>
+						<!-- USER INSERT BUILDING NAME -->
+							
 
 
 
-			<?php
+<?php
 
 //SQL CODES
-			$sqlDelete = "Delete from user_save where (user_id = '".$userId."' AND building_id = '".$receiveDelete."');";
-			if (!isset($receiveDelete)){
-
-			} else {
-				$delete = mysqli_query($conn, $sqlDelete);
-				if ($delete) {
-					echo "Record deleted successfully";
-				} else {
-					echo "Error deleting record: " . $conn->error;
-				}
-			}
-
-
-
-
-			$sql = "Select room.building_id, building_name, room_description, room_number FROM
-			room JOIN buildings JOIN user_save
-			ON (room.building_id = buildings.building_id) AND (user_save.building_id = buildings.building_id)
-			WHERE user_id='".$userId."';";
-			$result = mysqli_query($conn, $sql);
-			$row  = mysqli_fetch_assoc($result);
-
-			echo "<div id =\"savedBuildings\">";
-			if (mysqli_num_rows($result) > 0) {   
-				while($row = mysqli_fetch_assoc($result)) {
-					//echo "<div id = \"buildingList\">";  don't forget to add the closing div for this
-					echo 
-					"<div class=\"row\">
-					<div id = \"buildingList\" class=\"col-sm-1\">". $row['building_id'] ."</div> 
-					<div id = \"buildingList\" class=\"col-sm-2\">". $row['building_name'] ."</div>
-					<div id = \"buildingList\" class=\"col-sm-3\">". $row['room_description'] ."</div>
-					<div id = \"buildingList\" class=\"col-sm-1\">". $row['room_number'] ."</div>
-					<div class=\"col-sm-3\"> 
-						<form method=\"POST\" action=\"userlogged.php\">
-
-							<input type=\"hidden\" name=\"email\" value=\"".$receiveEmail."\">
-							<input type=\"hidden\" name=\"password\" value=\"".$receivePassword."\">
-							<input type=\"hidden\" name=\"deleteId\" value=\"".$row['building_id']."\">
-							<button id=\"delete\" class=\"btn btn-danger\">
-								Delete Building</button>
-							</form>
-						</div>
-
-						<div class=\"col-sm-2\">
-						</div>";
-
-						echo "</div><br>";
-					}
-				} else {
-					echo "No results..";
-				}
-				echo "</div>";
-/*foreach ($row as &$value) {
-	echo $value. "<br>";
-}*/
+$sqlFindId = "Select building_id from buildings where building_name = '".$receiveBuildingName."'";
+$getId = mysqli_query($conn, $sqlFindId);
+if (mysqli_num_rows($getId) == 1){
+	while($row = mysqli_fetch_assoc($getId)) {
+		$GLOBALS['buildingId'] = $row['building_id'];
+}
+$sqlAdd = "Insert into user_save(user_id, building_id)
+			Values ('".$userId."','".$buildingId."')";
+mysqli_query($conn, $sqlAdd);
+}
 ?>
+								<form  method ="POST" action = "userlogged.php">
+								<input type="hidden" name="email" value="<?php echo htmlspecialchars($receiveEmail); ?>">
+								<input type="hidden" name="password" value="<?php echo htmlspecialchars($receivePassword); ?>">
+								<p><label></label>Building Name: <input type='text' id='searchOn' class="form-control typeahead" name ="building_name"></p>
+
+								<button type=\"button\" class=\"btn btn-secondary\" >ADD</button>
+								</form>
 
 
-<div id="userArea">
 
-	<!-- SQL CONNECTION -->
+							<script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+							<script type="text/javascript" src="http://code.jquery.com/ui/1.10.1/jquery-ui.min.js"></script>  
+							<script type="text/javascript"> 
+								$(function() {
+									var buildingList = ['Worchester', 'Wicomico Hall', 'Van Munching Building', 'Tydings Hall', 'The Armor', 'Tawes Hall', 'Symons Hall', 'Susquehanna Hall', 'Stamp Student Union', 'St. Mary\'s Hall', 'South Campus Dining Hall', 'South Campus Commons 7', 'South Campus Commons 6', 'South Campus Commons 5', 'South Campus Commons 4', 'South Campus Commons 3', 'South Campus Commons 2', 'South Campus Commons 1', 'Somerset Hall', 'Skinner Building', 'Shoemaker Building', 'Service Building', 'School of Public Health', 'Ritchie Coliseum', 'Reckord Armory Building', 'Queen Anne\'s Hall', 'Plant Science Building', 'Physics Building', 'Physical Sciences Complex', 'Oakland Hall', 'Mitchell Building', 'Microbiology Building', 'McKeldin Library', 'Mathematics Building', 'Martin Hall (Engineering)', 'Marie Mount Hall', 'Main Administration Building', 'Leonardtown Office Building', 'Leonardtown Community Center', 'LeFrak Hall', 'Lee Building', 'LaPlata Hall', 'Knight Hall', 'Kim Engineering', 'Key Hall', 'Jimenez Hall', 'J.M. Patterson', 'Hornbake Library', 'Health Center', 'Harford Hall', 'Hagertown Hall', 'H.J. Patterson', 'Geology Building', 'Eppley Recreation Center', 'Engineering Laboratory Building', 'Engineering and Physical Sciences Library', 'Ellicott Hall', 'Elkton Hall', 'Easton Hall', 'Dorchester Hall', 'Denton Hall', 'Cumberland Hall', 'Computer Science Instructional Center', 'Computer and Space Sciences Building', 'Cole Student Activities Building', 'Clarice Smith Performing Arts Center', 'Chmical/Nuclear Engineering Building', 'Chincoteague Hall', 'Chestertown Hall', 'Chesapeake Building', 'Chemistry-Biochemistry', 'Cecil Hall', 'Carroll Hall', 'Cambridge Hall', 'Cambridge Community Center', 'Calvert Hall', 'Biomolecular Sciences', 'Biology/Psychology', 'Benjamin Building', 'Bell Air Hall', 'AV Williams', 'Art Sociology Building', 'Architecture Building', 'Anne Arundel Hall', 'Annapolis Hall', 'Animal Science Building', '251 North Dining Hall'];
+    //autocomplete
+    $("#searchOn").autocomplete({
+    	errorElement:'div',
+    	source: buildingList,
+    	minLength: 1
+    });                
+
+});
+</script>					
+
+</div>
+
+<?php
+
+//echo "Data Retrieved<br><br>";
+echo "<h4>SAVED BUILDINGS</h4>";?>
+
+<div class="row">
+	<div  id="tableHead" class="col-sm-3">Building Name</div>
+	<div  id="tableHead" class="col-sm-3">Room Description</div>
+	<div  id="tableHead" class="col-sm-2">Room Number</div>
+	<div  id="tableHead" class="col-sm-3">Delete Building</div>
+</div>
+
+<!-- User can delete the building -->
+
+<?php
+
+//SQL CODES
+$sqlDelete = "Delete from user_save where (user_id = '".$userId."' AND building_id = '".$receiveDelete."');";
+if (!isset($receiveDelete)){
+
+} else {
+	$delete = mysqli_query($conn, $sqlDelete);
+	if ($delete) {
+		echo '<script type="text/javascript">alert("Building was deleted!");</script>';
+	} else {
+	}
+}
 
 
-	<div id=userDash> 
 
-	</div>
+
+$sql = "Select room.building_id, building_name, room_description, room_number FROM
+room JOIN buildings JOIN user_save
+ON (room.building_id = buildings.building_id) AND (user_save.building_id = buildings.building_id)
+WHERE user_id='".$userId."';";
+$result = mysqli_query($conn, $sql);
+$row  = mysqli_fetch_assoc($result);
+
+echo "<div id =\"savedBuildings\">";
+if (mysqli_num_rows($result) > 0) {   
+	while($row = mysqli_fetch_assoc($result)) {
+					//echo "<div id = \"buildingList\">";  don't forget to add the closing div for this
+		echo 
+		"<div class=\"row\">
+		<div id = \"buildingList\" class=\"col-sm-3\">". $row['building_name'] ."</div>
+		<div id = \"buildingList\" class=\"col-sm-3\">". $row['room_description'] ."</div>
+		<div id = \"buildingList\" class=\"col-sm-2\">". $row['room_number'] ."</div>
+		<div class=\"col-sm-2\"> 
+			<form method=\"POST\" action=\"userlogged.php\">
+
+				<input type=\"hidden\" name=\"email\" value=\"".$receiveEmail."\">
+				<input type=\"hidden\" name=\"password\" value=\"".$receivePassword."\">
+				<input type=\"hidden\" name=\"deleteId\" value=\"".$row['building_id']."\">
+				<button id=\"delete\" class=\"btn btn-danger\">
+					Delete Building</button>
+				</form>
+			</div>
+
+			<div class=\"col-sm-2\">
+			</div>";
+
+			echo "</div><br>";
+		}
+	} else {
+		echo "No results..";
+	}
+	echo "</div>";
+
+	?>
+
+
+
+</div>
 
 </div>
 </div>
 
 
 
-<!-- ABOUT PAGE -->
+
+
+
+
+
+
+<!--                                          ABOUT PAGE                                     -->
+
+
+
+
+
+
+
+
+
 
 <div id ="about" class="sections">
 	<h1> ABOUT </h1>
@@ -245,7 +332,7 @@
 		TapFinder is focused for University of Maryland, College Park (UMCP)</br>
 		We built this system to help users find filtered water stations around UMD, CP</br>
 	</p>
-	<h4>Ideal Scenario</h4>
+	<h3>Ideal Scenario</h3>
 	<ul>
 		<li>Thirsty student is walking to class with an empty bottle</li>
 		<li>Student opens the website and types name of building thats on the way to his/her class.</li>
@@ -253,10 +340,10 @@
 		<li>Student is hydrated and is on the way to class</li>
 
 	</ul>
-	<h4>Overarching goals</h4>
+	<h3>Overarching goals</h3>
 	<p>Our overarching goal is to help solve the issue of dehydration. Often times student may be so invested in their work, schedule, exams etc. that they do not hydrate properly. This can affect students physical health and academic performance. By building a system to find location of a water source, we are striving to ultimately help improve the health of students and faculty on campus.</p>
 
-	<h4>Team</h4>
+	<h3>Team</h3>
 	<ul>
 		<li>Aseem Dhakal, BSIS</li>
 		<li>Bukar Sun Aibe, BSIS</li>

@@ -91,7 +91,7 @@
       TapFinder is focused for University of Maryland, College Park (UMCP)</br>
       We built this system to help users find filtered water stations around UMD, CP</br>
    </p>
-   <h4>Ideal Scenario</h4>
+   <h3>Ideal Scenario</h3>
    <ul>
       <li>Thirsty student is walking to class with an empty bottle</li>
       <li>Student opens the website and types name of building thats on the way to his/her class.</li>
@@ -99,10 +99,10 @@
       <li>Student is hydrated and is on the way to class</li>
 
    </ul>
-   <h4>Overarching goals</h4>
+   <h3>Overarching goals</h3>
    <p>Our overarching goal is to help solve the issue of dehydration. Often times student may be so invested in their work, schedule, exams etc. that they do not hydrate properly. This can affect students physical health and academic performance. By building a system to find location of a water source, we are striving to ultimately help improve the health of students and faculty on campus.</p>
 
-   <h4>Team</h4>
+   <h3>Team</h3>
    <ul>
       <li>Aseem Dhakal, BSIS</li>
       <li>Bukar Sun Aibe, BSIS</li>
@@ -153,7 +153,7 @@
 
    <div id="loginForm">
       <!-- LOGIN FORM -->
-      <form action = "userlogged.php" method="POST">
+      <form action = "userlogged.php" method="POST" id = "login">
 
          <div class="form-group">
             <label for="usr">Email:</label>
