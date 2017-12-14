@@ -29,7 +29,6 @@
          $("#submitlogin").click(function(){
             user = $('input[name = "email"]').val();
             password = $('input[name = "password"]').val();
-
             $.post("userlogged.php"),
             {
                email: email,
