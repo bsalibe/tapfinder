@@ -6,26 +6,29 @@
    <title>Tap Finder</title>
    <meta charset="utf-8">
    <meta name="viewport" content="width=device-width, initial-scale=1">
+   <!-- google fonts -->
+   <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&amp;lang=en" />
    <!-- Latest compiled and minified CSS -->
    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
    <!-- jQuery library -->
    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
    <!-- Popper JS -->
    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.6/umd/popper.min.js"></script>
    <!-- Latest compiled JavaScript -->
    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
    <!-- for making ajax request-->
-   <script type="text/javascript" src="js/liveSearch.js"></script>
+   <script type="text/javascript" src="liveSearch.js"></script>
    <!-- JQuery smooth scroll for SPA-->
-   <script type="text/javascript" src="smoothScroll.js"></script>
+   <!-- <script type="text/javascript" src="smoothScroll.js"></script> -->
    <!-- for CSS file. -->
    <link rel="stylesheet" type="text/css" href="tapfinder.css">  
 
    <!-- LOG IN SCRIPT-->
 
    <script>
-      $(document).ready(function(){}
+      $(document).ready(function(){
          $("#submitlogin").click(function(){
             user = $('input[name = "email"]').val();
             password = $('input[name = "password"]').val();
@@ -37,8 +40,6 @@
          });
       });
    </script>
-
-
 
 </head>
 
@@ -66,24 +67,32 @@
 
 
 <!-- HOME PAGE-->
-<div id="home" class="sections">
+<section id="introduction">  
+   <div class="container"">
+   <h1 class= "text-white main-head">Tap Finder <span style="color: red">UMD</span></h1>
+   <div class="input-group align-search" id= "response_form">      
+         <input type="text" id="search" class="form-control" name="building_name" placeholder="Enter building name..." aria-label="Search for..." autofocus="autofocus">
+         <!-- <input type="submit" id="submit_btn" name="submit"> -->
+         <span class="input-group-btn">
+            <button id= "submit_btn" class="btn btn-success" type="button">Go!</button>
+         </span>      
+
+   </div>
+   <div id="display" class="text-white"></div>
+   <div class="row fill-viewport">   
+          
+   </div>
+
+  </div>
 
 
-   <h1> HOME </h1>
 
-   <input type="text" id="building_name" placeholder="Enter building name"/>
-   <br><b>Ex: </b><i>Mckeldin, Stamp</i><br/>
-
-   <!-- Search Suggestions is displayed here -->
-   <div id="Suggestions"></div>
-
-
-</div>
+</section>
 
 <!-- ABOUT PAGE -->
 
-<div id ="about" class="sections">
-   <h1> ABOUT </h1>
+<section id ="about">
+   <h1> About </h1>
    <h3> <img src="logo.svg" alt="Logo" style="width:40px"> What is Tapfinder</h3> </br>
    <p> 
       TapFinder is dynamic web application that helps locate water filling stations.</br>
@@ -144,11 +153,11 @@
 </div>
 
 </div>
-</div>
+</section>
 
 <!-- about page content goes in here, import style sheet-->
 <div id="login" class="sections">
-   <h1>LOGIN</h1>
+   <h1>Login</h1>
 
    <div id="loginForm">
       <!-- LOGIN FORM -->

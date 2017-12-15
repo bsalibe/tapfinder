@@ -21,7 +21,10 @@ if (isset($_POST['building_name'])) {
    $Name = $_POST['building_name']; 	
 //Search query.
  
-   $Query = "SELECT building_name FROM buildings WHERE building_name LIKE '%$Name%' LIMIT 5";
+   $Query = "SELECT room_number 
+  FROM room r JOIN buildings b
+    ON r.building_id = b.building_id 
+  WHERE b.building_name = '$Name';";
  
 //Query execution
  
@@ -42,8 +45,9 @@ if (isset($_POST['building_name'])) {
  
    <!-- Creating unordered list items.
         By passing fetched result as parameter. -->
-   <li onclick='fill("<?php echo $Result['building_name']; ?>")'>
-   <a><?php echo $Result['building_name']; ?></li></a>
+        
+   <li onmousehover= onclick='fill("<?php echo $Result['room_number']; ?>")'>
+   <a><?php echo $Result['room_number']; ?></li></a>
    <!--php code for closing while loop and staring if.-->
    <?php
 
