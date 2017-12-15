@@ -42,7 +42,7 @@ if (isset($_POST['building_name'])) {
  
    <!-- Creating unordered list items.
         By passing fetched result as parameter. -->
-   <li onmousehover= onclick='fill("<?php echo $Result['building_name']; ?>")'>
+   <li onclick='fill("<?php echo $Result['building_name']; ?>")'>
    <a><?php echo $Result['building_name']; ?></li></a>
    <!--php code for closing while loop and staring if.-->
    <?php
