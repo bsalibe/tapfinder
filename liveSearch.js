@@ -68,7 +68,8 @@ $(document).ready(function() {
                    
                    $("#response_form").html("<div id='message' class= text-white></div>");                   
                    $("#message").html("<p> Water stations are in </p>");
-				   $("#message").html(some_room); 				  
+				   $("#message").html(some_room); 					   
+				   
                }
            });
            

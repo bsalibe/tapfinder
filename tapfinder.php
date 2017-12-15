@@ -54,10 +54,10 @@
   </a>
   <ul class="navbar-nav">
      <li class="nav-item">
-      <a class="nav-link" href="#introduction">HOME</a>
+      <a class="nav-link" href="tapfinder.php">HOME</a>
    </li>
    <li class="nav-item">
-      <a class="nav-link" href="#about">ABOUT</a>
+      <a class="nav-link" href="#info-2">ABOUT</a>
    </li>
    <li class="nav-item">
       <a class="nav-link" href="#login">LOGIN</a>
@@ -76,12 +76,9 @@
                <span class="input-group-btn">
                   <button id= "submit_btn" class="btn btn-success" type="button">Go!</button>
                </span>      
-
-   </div>
-   <div id="display" class="text-white"></div>
-   <div class="row fill-viewport">   
-          
-   </div>
+         </div>
+         <div id="display" class="text-white"></div>
+         <div class="row fill-viewport"></div>
 
   </div>
 
@@ -151,7 +148,7 @@
    
 
 <div id="login" class="sections">
-   <h1>Login</h1>
+   <h1 style="color: #0EA2F0FF">Login</h1>
 
    <div id="loginForm">
       <!-- LOGIN FORM -->

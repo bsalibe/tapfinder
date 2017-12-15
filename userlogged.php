@@ -8,9 +8,11 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<!-- Latest compiled and minified CSS -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="tapfinder.css">  
 	<!-- jQuery library -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.1/themes/base/minified/jquery-ui.min.css" type="text/css" /> 
+	<script type="text/javascript" src="liveSearch.js"></script>
 	<!-- Popper JS -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.6/umd/popper.min.js"></script>
 	<!-- Latest compiled JavaScript -->
@@ -39,8 +41,9 @@
 	}
 	$receiveEmail = $_POST["email"];
 	$receivePassword = $_POST["password"];
-	$receiveDelete =$_POST["deleteId"];
-	$receiveBuildingName = $_POST["building_name"];
+	
+	
+	
 	$buildingId;
 
 	$userId;
@@ -74,50 +77,54 @@
 	//echo 
 	query_to_db($conn, $sql);
 
+	//adds a new building to user's account
 
-
-//SQL CODES
-$sqlFindId = "Select buildings.building_id from buildings where building_name = '".$receiveBuildingName."'";
-$getId = mysqli_query($conn, $sqlFindId);
-//echo '<script type="text/javascript">alert("'.$buildingId.'");</script>';
-
-//////////
-
-//$sqlCheckDuplicate; //= "Select user_id, user_save.building_id from user_save where (user_id='".$userId."' AND user_save.building_id = '".$buildingId."')";
-
-//$numRows; //= mysqli_query($conn, $sqlCheckDuplicate);
-//$duplicateCheck = mysqli_num_rows($numRows);
-if (mysqli_num_rows($getId) == 1)
-{
+if (isset($_POST["building_name"])){
+		$receiveBuildingName = $_POST["building_name"];
 	
-	$row = mysqli_fetch_assoc($getId);
-	$GLOBALS['buildingId'] = $row['building_id'];
-	//DEBUGGING
-	;
 
-	$sqlCheckDuplicate = "Select user_id, user_save.building_id from user_save where 
-	(user_id='".$userId."' AND user_save.building_id = '".$buildingId."')";
-//echo '<script type="text/javascript">alert("goodSoFar");</script>';
-	if ($saveNum = mysqli_query($conn, $sqlCheckDuplicate))
+	//SQL CODES
+	$sqlFindId = "Select buildings.building_id from buildings where building_name = '".$receiveBuildingName."'";
+	$getId = mysqli_query($conn, $sqlFindId);
+	//echo '<script type="text/javascript">alert("'.$buildingId.'");</script>';
+
+	//////////
+
+	//$sqlCheckDuplicate; //= "Select user_id, user_save.building_id from user_save where (user_id='".$userId."' AND user_save.building_id = '".$buildingId."')";
+
+	//$numRows; //= mysqli_query($conn, $sqlCheckDuplicate);
+	//$duplicateCheck = mysqli_num_rows($numRows);
+	if (mysqli_num_rows($getId) == 1)
 	{
-//		echo '<script type="text/javascript">alert("good so far");</script>';
-		$rowCount = mysqli_num_rows($saveNum);
-		if ($rowCount == 0)
+		
+		$row = mysqli_fetch_assoc($getId);
+		$GLOBALS['buildingId'] = $row['building_id'];
+		//DEBUGGING
+		;
+
+		$sqlCheckDuplicate = "Select user_id, user_save.building_id from user_save where 
+		(user_id='".$userId."' AND user_save.building_id = '".$buildingId."')";
+	//echo '<script type="text/javascript">alert("goodSoFar");</script>';
+		if ($saveNum = mysqli_query($conn, $sqlCheckDuplicate))
 		{
-//			echo '<script type="text/javascript">alert("0");</script>';
-			$sqlAdd = "Insert into user_save(user_id, user_save.building_id)
-			Values ('".$userId."','".$buildingId."')";
-			mysqli_query($conn, $sqlAdd);
-		} else
-		{
-//			echo '<script type="text/javascript">alert("MORE THAN 0");</script>';
+	//		echo '<script type="text/javascript">alert("good so far");</script>';
+			$rowCount = mysqli_num_rows($saveNum);
+			if ($rowCount == 0)
+			{
+	//			echo '<script type="text/javascript">alert("0");</script>';
+				$sqlAdd = "Insert into user_save(user_id, user_save.building_id)
+				Values ('".$userId."','".$buildingId."')";
+				mysqli_query($conn, $sqlAdd);
+			} else
+			{
+	//			echo '<script type="text/javascript">alert("MORE THAN 0");</script>';
+			}
 		}
+
+	} else{
+	//	echo '<script type="text/javascript">alert("no building exists");</script>';
 	}
-
-} else{
-//	echo '<script type="text/javascript">alert("no building exists");</script>';
 }
-
 
 ?>
 
@@ -141,15 +148,16 @@ if (mysqli_num_rows($getId) == 1)
 		</a>
 		<ul class="navbar-nav">
 			<li class="nav-item">
-				<a class="nav-link" href="#home">HOME</a>
+				<a class="nav-link" href="tapfinder.php">HOME</a>
 			</li> 
+			
+			
 			<li class="nav-item">
 				<a class="nav-link" href="#account">ACCOUNT</a>
 			</li>
 			<li class="nav-item">
 				<a class="nav-link" href="#about">ABOUT</a>
 			</li>
-
 
 		</nav>
 
@@ -165,18 +173,21 @@ if (mysqli_num_rows($getId) == 1)
 
 
 
-		<div id="home" class="sections">
+		<section id="introduction" class="sections">
 
-			<h1> HOME </h1>
+			<h1 class= "text-white main-head">Tap Finder <span style="color: red">UMD</span></h1>
 
-			<input type="text" id="building_name" placeholder="Enter building name"/>
-			<br><b>Ex: </b><i>Mckeldin, Stamp</i><br/>
+			<div class="input-group align-search" id= "response_form">      
+               <input type="text" id="search" class="form-control" name="building_name" placeholder="Enter building name..." aria-label="Search for..." autofocus="autofocus">
+               <!-- <input type="submit" id="submit_btn" name="submit"> -->
+               <span class="input-group-btn">
+                  <button id= "submit_btn" class="btn btn-success" type="button">Go!</button>
+               </span>      
+	         </div>
+	         <div id="display" class="text-white"></div>
+	         <div class="row fill-viewport"></div>
 
-			<!-- Search Suggestions is displayed here -->
-			<div id="Suggestions"></div>
-
-
-		</div>
+		</section>
 
 
 
@@ -274,59 +285,61 @@ echo "<h4>SAVED BUILDINGS</h4>";?>
 
 <?php
 
-//SQL CODES
-$sqlDelete = "Delete from user_save where (user_id = '".$userId."' AND building_id = '".$receiveDelete."');";
-if (!isset($receiveDelete)){
+if (isset($_POST["deleteId"])){
+		$receiveDelete =$_POST["deleteId"];		
+	//SQL CODES
+	$sqlDelete = "Delete from user_save where (user_id = '".$userId."' AND building_id = '".$receiveDelete."');";
+	if (!isset($receiveDelete)){
 
-} else {
-	$delete = mysqli_query($conn, $sqlDelete);
-	if ($delete) {
-		echo '<script type="text/javascript">alert("Building was deleted!");</script>';
 	} else {
-	}
-}
-
-
-
-
-$sql = "Select room.building_id, buildings.building_name, room.room_description, room.room_number FROM
-room JOIN buildings JOIN user_save
-ON (room.building_id = buildings.building_id) AND (user_save.building_id = buildings.building_id)
-WHERE user_id='".$userId."';";
-$result = mysqli_query($conn, $sql);
-$row  = mysqli_fetch_assoc($result);
-
-echo "<div id =\"savedBuildings\">";
-if (mysqli_num_rows($result)) {   
-	while($row = mysqli_fetch_assoc($result)) {
-					//echo "<div id = \"buildingList\">";  don't forget to add the closing div for this
-		echo 
-		"<div class=\"row\">
-		<div id = \"buildingList\" class=\"col-sm-3\">". $row['building_name'] ."</div>
-		<div id = \"buildingList\" class=\"col-sm-3\">". $row['room_description'] ."</div>
-		<div id = \"buildingList\" class=\"col-sm-2\">". $row['room_number'] ."</div>
-		<div class=\"col-sm-2\"> 
-			<form method=\"POST\" action=\"userlogged.php\">
-
-				<input type=\"hidden\" name=\"email\" value=\"".$receiveEmail."\">
-				<input type=\"hidden\" name=\"password\" value=\"".$receivePassword."\">
-				<input type=\"hidden\" name=\"deleteId\" value=\"".$row['building_id']."\">
-				<button id=\"delete\" class=\"btn btn-danger\">
-					Delete Building</button>
-				</form>
-			</div>
-
-			<div class=\"col-sm-2\">
-			</div>";
-
-			echo "</div><br>";
+		$delete = mysqli_query($conn, $sqlDelete);
+		if ($delete) {
+			echo '<script type="text/javascript">alert("Building was deleted!");</script>';
+		} else {
 		}
-	} else {
-		echo "No results..";
 	}
-	echo "</div>";
 
-	?>
+
+
+
+	$sql = "Select room.building_id, buildings.building_name, room.room_description, room.room_number FROM
+	room JOIN buildings JOIN user_save
+	ON (room.building_id = buildings.building_id) AND (user_save.building_id = buildings.building_id)
+	WHERE user_id='".$userId."';";
+	$result = mysqli_query($conn, $sql);
+	$row  = mysqli_fetch_assoc($result);
+
+	echo "<div id =\"savedBuildings\">";
+	if (mysqli_num_rows($result)) {   
+		while($row = mysqli_fetch_assoc($result)) {
+						//echo "<div id = \"buildingList\">";  don't forget to add the closing div for this
+			echo 
+			"<div class=\"row\">
+			<div id = \"buildingList\" class=\"col-sm-3\">". $row['building_name'] ."</div>
+			<div id = \"buildingList\" class=\"col-sm-3\">". $row['room_description'] ."</div>
+			<div id = \"buildingList\" class=\"col-sm-2\">". $row['room_number'] ."</div>
+			<div class=\"col-sm-2\"> 
+				<form method=\"POST\" action=\"userlogged.php\">
+
+					<input type=\"hidden\" name=\"email\" value=\"".$receiveEmail."\">
+					<input type=\"hidden\" name=\"password\" value=\"".$receivePassword."\">
+					<input type=\"hidden\" name=\"deleteId\" value=\"".$row['building_id']."\">
+					<button id=\"delete\" class=\"btn btn-danger\">
+						Delete Building</button>
+					</form>
+				</div>
+
+				<div class=\"col-sm-2\">
+				</div>";
+
+				echo "</div><br>";
+			}
+		} else {
+			echo "No results..";
+		}
+		echo "</div>";
+}
+?>
 
 
 
