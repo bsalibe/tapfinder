@@ -71,7 +71,7 @@
 
 	$sql = "select user_id from user where email = '".$receiveEmail."'
 	AND password='" .$receivePassword."'";
-	echo 
+	//echo 
 	query_to_db($conn, $sql);
 
 
@@ -79,17 +79,46 @@
 //SQL CODES
 $sqlFindId = "Select buildings.building_id from buildings where building_name = '".$receiveBuildingName."'";
 $getId = mysqli_query($conn, $sqlFindId);
-if (mysqli_num_rows($getId) == 1){
-	while($row = mysqli_fetch_assoc($getId)) {
-		$GLOBALS['buildingId'] = $row['building_id'];
-}
-if (mysqli_num_rows (mysqli_query($conn, "Select user_id, user_save.building_id from user_save where 
-	(user_id='".$userId."' AND user_save.building_id = '".$buildingId."'")) == 0){
-$sqlAdd = "Insert into user_save(user_id, user_save.building_id)
+//echo '<script type="text/javascript">alert("'.$buildingId.'");</script>';
+
+//////////
+
+//$sqlCheckDuplicate; //= "Select user_id, user_save.building_id from user_save where (user_id='".$userId."' AND user_save.building_id = '".$buildingId."')";
+
+//$numRows; //= mysqli_query($conn, $sqlCheckDuplicate);
+//$duplicateCheck = mysqli_num_rows($numRows);
+if (mysqli_num_rows($getId) == 1)
+{
+	
+	$row = mysqli_fetch_assoc($getId);
+	$GLOBALS['buildingId'] = $row['building_id'];
+	//DEBUGGING
+	;
+
+	$sqlCheckDuplicate = "Select user_id, user_save.building_id from user_save where 
+	(user_id='".$userId."' AND user_save.building_id = '".$buildingId."')";
+//echo '<script type="text/javascript">alert("goodSoFar");</script>';
+	if ($saveNum = mysqli_query($conn, $sqlCheckDuplicate))
+	{
+//		echo '<script type="text/javascript">alert("good so far");</script>';
+		$rowCount = mysqli_num_rows($saveNum);
+		if ($rowCount == 0)
+		{
+//			echo '<script type="text/javascript">alert("0");</script>';
+			$sqlAdd = "Insert into user_save(user_id, user_save.building_id)
 			Values ('".$userId."','".$buildingId."')";
-mysqli_query($conn, $sqlAdd);
+			mysqli_query($conn, $sqlAdd);
+		} else
+		{
+//			echo '<script type="text/javascript">alert("MORE THAN 0");</script>';
+		}
+	}
+
+} else{
+//	echo '<script type="text/javascript">alert("no building exists");</script>';
 }
-}
+
+
 ?>
 
 

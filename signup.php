@@ -26,6 +26,7 @@
 <body>
 
 	<div id="loginForm">
+      <form action = "tapfinder.php?#login"><button class="btn btn-danger"><- Go Back to Login</button></form>
       <!-- LOGIN FORM -->
       <form action = "register.php" method="POST">
       	<h1>Sign Up</h1>
@@ -46,7 +47,7 @@
             <label for="usr">Last Name:</label>
             <input type="text" class="form-control" id="lastname" name = "user_last_name" >
          </div>
-         <button id="submitlogin"> Register </button> <br><br>Not Registered? Sign up with the button below!!
+         <button id="submitlogin" class ="btn btn-success"> Register </button> <br><br>
 
       </form>
    </div>

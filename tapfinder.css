@@ -101,6 +101,9 @@ label{
 	display: none;
 	size: 0px;
 }
+button{
+	cursor: pointer;
+}
 
 
 #display{	
