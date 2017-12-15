@@ -4,7 +4,7 @@
 $con = MySQLi_connect(
    "localhost", //Server host name.
    "root", //Database username.
-   "Olomitt1", //Database password.
+   "root", //Database password.
    "inst377" //Database name or anything you would like to call it.
  
 );
@@ -42,7 +42,7 @@ if (isset($_POST['building_name'])) {
  
    <!-- Creating unordered list items.
         By passing fetched result as parameter. -->
-   <li onclick='fill("<?php echo $Result['building_name']; ?>")'>
+   <li onmousehover= onclick='fill("<?php echo $Result['building_name']; ?>")'>
    <a><?php echo $Result['building_name']; ?></li></a>
    <!--php code for closing while loop and staring if.-->
    <?php
