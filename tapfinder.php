@@ -54,7 +54,7 @@
   </a>
   <ul class="navbar-nav">
      <li class="nav-item">
-      <a class="nav-link" href="#home">HOME</a>
+      <a class="nav-link" href="#introduction">HOME</a>
    </li>
    <li class="nav-item">
       <a class="nav-link" href="#about">ABOUT</a>
@@ -67,15 +67,15 @@
 
 
 <!-- HOME PAGE-->
-<section id="introduction">  
-   <div class="container"">
-   <h1 class= "text-white main-head">Tap Finder <span style="color: red">UMD</span></h1>
-   <div class="input-group align-search" id= "response_form">      
-         <input type="text" id="search" class="form-control" name="building_name" placeholder="Enter building name..." aria-label="Search for..." autofocus="autofocus">
-         <!-- <input type="submit" id="submit_btn" name="submit"> -->
-         <span class="input-group-btn">
-            <button id= "submit_btn" class="btn btn-success" type="button">Go!</button>
-         </span>      
+<section id="introduction" align-items-center>  
+   <div class="container">
+      <h1 class= "text-white main-head">Tap Finder <span style="color: red">UMD</span></h1>
+         <div class="input-group align-search" id= "response_form">      
+               <input type="text" id="search" class="form-control" name="building_name" placeholder="Enter building name..." aria-label="Search for..." autofocus="autofocus">
+               <!-- <input type="submit" id="submit_btn" name="submit"> -->
+               <span class="input-group-btn">
+                  <button id= "submit_btn" class="btn btn-success" type="button">Go!</button>
+               </span>      
 
    </div>
    <div id="display" class="text-white"></div>
@@ -85,56 +85,52 @@
 
   </div>
 
-
-
 </section>
 
 <!-- ABOUT PAGE -->
 
-<section id ="about">
-   <h1> About </h1>
-   <h3> <img src="logo.svg" alt="Logo" style="width:40px"> What is Tapfinder</h3> </br>
-   <p> 
-      TapFinder is dynamic web application that helps locate water filling stations.</br>
-      TapFinder is focused for University of Maryland, College Park (UMCP)</br>
-      We built this system to help users find filtered water stations around UMD, CP</br>
-   </p>
-   <h3>Ideal Scenario</h3>
-   <ul>
-      <li>Thirsty student is walking to class with an empty bottle</li>
-      <li>Student opens the website and types name of building thats on the way to his/her class.</li>
-      <li>Student finds the location of water filling station, and pops in the building for quick refill</li>
-      <li>Student is hydrated and is on the way to class</li>
-
-   </ul>
-   <h3>Overarching goals</h3>
-   <p>Our overarching goal is to help solve the issue of dehydration. Often times student may be so invested in their work, schedule, exams etc. that they do not hydrate properly. This can affect students physical health and academic performance. By building a system to find location of a water source, we are striving to ultimately help improve the health of students and faculty on campus.</p>
-
-   <h3>Team</h3>
-   <ul>
-      <li>Aseem Dhakal, BSIS</li>
-      <li>Bukar Sun Aibe, BSIS</li>
-      <li>Kyle Chin, BSIS</li>
-      <li>Oni Oluwayesi, BSIS</li>
-   </ul>
-
-   <!-- Button to Open the Modal -->
-   <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal" 
+<section id="info-2" class="bg-dark">
+<h1 style="padding-top: 30px; color: #0EA2F0FF"> About Us</h1>
+ <div class="container">
+   <div class="row align-items-center fill-80-viewport">
+     <div class="col-12 col-md-6 my-5 order-2 order-md-1">
+       <p class="lead text-white-70"><strong>Tap Finder helps students locate water filling stations across campus.</strong></p>
+       <h3 class="text-uppercase text-white">Overarching Goal</h3>
+       <p class="lead text-white-70">TapFinder is focused for University of Maryland, College Park (UMCP).
+      We built this system to help users find filtered water stations around UMD. <em><span style="color: #0EA2F0FF">Our overarching goal is to help solve the issue of dehydration in a sustainable way.</span></em> Often times student may be so invested in their work, schedule, exams etc. that they do not hydrate properly. This can affect students physical health and academic performance. By building a system to find location of a water source, we are striving to ultimately help improve the health of students and faculty on campus.</p>
+      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal" 
    onmouseover="" style="cursor: pointer;">
    Show Contact Information
-</button>
-
-<!-- The Modal -->
-<div class="modal fade" id="myModal">
+   </button>
+      
+     </div>
+     <pre class="col-12 col-md-6 my-5 order-1 order-md-2 py-4 border border-info rounded text-info">
+      <span></span> <h4>Ideal Scenario</h4>
+      <span>1.</span> Thirsty student is walking to class with an empty bottle.
+      <span>2.</span> Student opens the website and types name of building 
+      <span></span>   thats on the way to his/her class. 
+      <span>3. </span>Student finds the location of water filling station,       
+      <span></span>   and pops in the building for quick refill.
+      <span>4.</span> Student is hydrated and is on the way to class.          
+      <span></span>     <h4>The Team</h4>
+      <span>1. </span> Aseem Dhakal, BSIS
+      <span>2. </span> Bukar Sun Aibe, BSIS 
+      <span>3. </span> Kyle Chin, BSIS
+      <span>4. </span> Oni Oluwaseyi, BSIS     
+      </pre>
+   </div>
+ </div>
+ <!-- The Modal -->
+   <div class="modal fade" id="myModal">
    <div class="modal-dialog">
       <div class="modal-content">
-
+   
          <!-- Modal Header -->
          <div class="modal-header">
             <h4 class="modal-title">Contact Email</h4>
             <button type="button" class="close" data-dismiss="modal">&times;</button>
          </div>
-
+   
          <!-- Modal body -->
          <div class="modal-body">
             contact_tapfinder@gmail.com
@@ -142,20 +138,18 @@
          <div class="modal-body">
             Please state your purpose in the subject line when you email
          </div>
-
+   
          <!-- Modal footer -->
          <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
          </div>
-
+   
       </div>
    </div>
-</div>
-
-</div>
+   </div>
 </section>
+   
 
-<!-- about page content goes in here, import style sheet-->
 <div id="login" class="sections">
    <h1>Login</h1>
 

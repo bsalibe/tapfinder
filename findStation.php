@@ -4,7 +4,7 @@
 $con = MySQLi_connect(
    "localhost", //Server host name.
    "root", //Database username.
-   "root", //Database password.
+   "Olomitt1", //Database password.
    "inst377" //Database name or anything you would like to call it.
  
 );
@@ -33,10 +33,9 @@ if (isset($_POST['building_name'])) {
 //Creating unordered list to display result.
  
    echo '
- 
+ <span>Water Station(s) in '. $Name .' building: </span> 
 <ul>
- 
-   ';
+  ';
  
    //Fetching result from database.
    while ($Result = MySQLi_fetch_array($ExecQuery)) { 	
@@ -47,7 +46,7 @@ if (isset($_POST['building_name'])) {
         By passing fetched result as parameter. -->
 
    <li onclick='fill("<?php echo $Result['room_number']; ?>")'>
-   <a><?php echo $Result['room_number']; ?></li></a>
+   <a><?php echo "room " . $Result['room_number']; ?></li></a>
    <!--php code for closing while loop and staring if.-->
    <?php
 
