@@ -4,7 +4,7 @@
 * Aseem Dhakal, adhakal@terpmail.umd.edu
 * Kyle Chin, kchin113@terpmail.umd.edu
 * Oni Oluwaseyi,
-* Sun Bukar Alibe
+* Sun Bukar Alibe, bsalibe@gmail.com
 
 
 ### Information Problem ###
