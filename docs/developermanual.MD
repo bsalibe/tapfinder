@@ -29,16 +29,23 @@
 
  ### Tables:
   #### Admin - email and password for admins 
-  * admin_id (Primary Key)
-  * admin_email
-  * admin_password
+  * admin_id (Primary Key) - int
+  * admin_email - varchar
+  * admin_password - varchar
+  
   #### Buildings- buildings on umd campus that contain water filling station
-  * building_id (Primary Key)
-  * building_name
-  * building_type
-  * building_access
-  * building_location
-  * building_community
+  * building_id (Primary Key) - int
+  * building_name - varchar
+  * building_type - enum('residence','academic','other')
+  * building_access - enum('accessible','not accessible')
+  * building_location - enum('north','south')
+  * building_community - varchar
+  
   #### Room- description and room number of water filling station
+  * room_id (Primary Key) - int
+  * room_description - varchar
+  * building_id - int
+  * room_number - int
+  
   #### User- name, email, and passwords of users
   #### User_save - saves buildings for users
