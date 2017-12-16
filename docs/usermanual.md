@@ -34,6 +34,7 @@
 >* If you want to cancel, hit the same button whose label has changed to "Cancel"
 * Step 6: Enter building name and click on the "ADD" button
 >* Select the building name from dropdown to avoid spelling mistake
+>* If you cannot see the location, then the building doesn't have a filtered water refilling station
 * Step 7: You should have saved all the filtered water stations associated with the building added to your account and available to look in your account dashboard
 
 ## Functionality 4- Remove a saved building from your account:
