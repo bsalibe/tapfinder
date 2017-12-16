@@ -15,7 +15,7 @@
 * Step 5: Click on the "Register" button on the bottom
 * Step 6: You should be registered with an account
 
-##Functionality 3- Save a building into your account:
+## Functionality 3- Save a building into your account:
 * Step 1: Open the website
 * Step 2: Click the "Login" tab on the top right
 * Step 3: Login with your credentials, if you do not have an account see Functionality 2.
@@ -24,7 +24,7 @@
 * Step 6: Enter building name and click on the "ADD" button
 * Step 7: You should have saved all the watering stations associated with the building
 
-##Functionality 4- Remove a saved building from your account:
+## Functionality 4- Remove a saved building from your account:
 * Step 1: Open the website
 * Step 2: Click the "Login" tab on the top right
 * Step 3: Login with your credentials
