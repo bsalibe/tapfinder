@@ -28,8 +28,17 @@
 ## Database schema:
 
  ### Tables:
- * Admin - email and password for admins
- * Buildings- buildings on umd campus that contain water filling station
- * Room- description and room number of water filling station
- * User- name, email, and passwords of users
- * User_save - saves buildings for users
+  #### Admin - email and password for admins 
+  * admin_id (Primary Key)
+  * admin_email
+  * admin_password
+  #### Buildings- buildings on umd campus that contain water filling station
+  * building_id (Primary Key)
+  * building_name
+  * building_type
+  * building_access
+  * building_location
+  * building_community
+  #### Room- description and room number of water filling station
+  #### User- name, email, and passwords of users
+  #### User_save - saves buildings for users
