@@ -23,6 +23,7 @@
 * Step 5: Click on the "Add Building" button on the left
 * Step 6: Enter building name and click on the "ADD" button
 * Step 7: You should have saved all the watering stations associated with the building
+
 ##Functionality 4- Remove a saved building from your account:
 * Step 1: Open the website
 * Step 2: Click the "Login" tab on the top right
