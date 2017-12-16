@@ -5,10 +5,10 @@
 * Step 1: Open the website (35.227.53.161/tapfinder.php)
 * Step 2: Click on the "Enter building name.." search bar
 * Step 3: Enter McKeldin Library
-* As you type a dropdown will show suggestions
-* Click on the dropdown with respective building to avoid spelling error and click "Go!"
+>* As you type a dropdown will show suggestions
+>* Click on the dropdown with respective building to avoid spelling error and click "Go!"
 * Step 4: You should be able to see all the water stations in McKeldin Library
-* You can search for any building name at UMD
+>* You can search for any building name at UMD
 
 ## Functionality 2- Sign up an account:
 * Step 1: Open the website
