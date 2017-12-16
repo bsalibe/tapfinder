@@ -2,7 +2,7 @@
 
 ### Contact Information ###
 * Aseem Dhakal, adhakal@terpmail.umd.edu
-* Kyle Chin, 
+* Kyle Chin, kchin113@terpmail.umd.edu
 * Oni Oluwaseyi,
 * Sun Bukar Alibe
 
