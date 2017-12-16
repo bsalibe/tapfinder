@@ -8,9 +8,11 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<!-- Latest compiled and minified CSS -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="tapfinder.css">  
 	<!-- jQuery library -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.1/themes/base/minified/jquery-ui.min.css" type="text/css" /> 
+	<script type="text/javascript" src="liveSearch.js"></script>
 	<!-- Popper JS -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.6/umd/popper.min.js"></script>
 	<!-- Latest compiled JavaScript -->
@@ -141,15 +143,15 @@ if (mysqli_num_rows($getId) == 1)
 		</a>
 		<ul class="navbar-nav">
 			<li class="nav-item">
-				<a class="nav-link" href="#home">HOME</a>
+				<a class="nav-link" href="tapfinder.php">HOME</a>
 			</li> 
-			<li class="nav-item">
-				<a class="nav-link" href="#account">ACCOUNT</a>
-			</li>
+			
 			<li class="nav-item">
 				<a class="nav-link" href="#about">ABOUT</a>
 			</li>
-
+			<li class="nav-item">
+				<a class="nav-link" href="#account">ACCOUNT</a>
+			</li>
 
 		</nav>
 
@@ -165,18 +167,21 @@ if (mysqli_num_rows($getId) == 1)
 
 
 
-		<div id="home" class="sections">
+		<section id="introduction" class="sections">
 
-			<h1> HOME </h1>
+			<h1 class= "text-white main-head">Tap Finder <span style="color: red">UMD</span></h1>
 
-			<input type="text" id="building_name" placeholder="Enter building name"/>
-			<br><b>Ex: </b><i>Mckeldin, Stamp</i><br/>
+			<div class="input-group align-search" id= "response_form">      
+               <input type="text" id="search" class="form-control" name="building_name" placeholder="Enter building name..." aria-label="Search for..." autofocus="autofocus">
+               <!-- <input type="submit" id="submit_btn" name="submit"> -->
+               <span class="input-group-btn">
+                  <button id= "submit_btn" class="btn btn-success" type="button">Go!</button>
+               </span>      
+	         </div>
+	         <div id="display" class="text-white"></div>
+	         <div class="row fill-viewport"></div>
 
-			<!-- Search Suggestions is displayed here -->
-			<div id="Suggestions"></div>
-
-
-		</div>
+		</section>
 
 
 

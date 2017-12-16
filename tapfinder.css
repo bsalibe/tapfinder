@@ -1,19 +1,34 @@
-#home {
+#introduction {
 	padding-top: 100px;
-	background-color: #BAE5EB;
-	height: 100vh;
+  background: linear-gradient(rgba(100,181,246 ,1), 
+  	rgba(0,0,0,0.8)),
+  	 url(background2.jpeg) 0% 0%/cover 
+  	 /*height: 100vh;*/
 }
+.fill-viewport {
+	min-height: 100vh;
+}
+
 #about {
-	padding-top: 100px;
-	background-color: #C1EEF5;
+	background: -webkit-linear-gradient(rgba(100,181,246 ,1), rgba(0,0,0,0.8)),
+  	 url(about.jpeg) 0% 0%/cover 
+;
+	background: -o-linear-gradient(rgba(91, 20, 234, 1.), rgba(0,0,0,0.8)),
+  	 url(about.jpeg) 0% 0%/cover 
+;
+	background: linear-gradient(rgba(43, 211, 174, 1.), rgba(0,0,0,0.8)),
+  	 url(about.jpeg) 0% 0%/cover 
+;
+	padding-top: 30px;
+	/*background-color: white;*/
 }
 #login {
-	padding-top: 100px;
+	padding-top: 30px;
 	background-color: #D4F4F9;
 }
 
 #account {
-	padding-top: 100px;
+	padding-top: 30px;
 	background-color: #D4F4F9;
 	padding-bottom: 100px;
 }
@@ -29,10 +44,12 @@
   padding-right:10vw;
 }
 
+
 h1{
 	text-align: center;
-	font-family: courier;
-	font-size: 80px;
+	font-family: comic;
+	font-size: 60px;
+	color: white;
 	font-weight: bolder;
 }
 
@@ -99,3 +116,70 @@ button{
 }
 
 
+#display{	
+	padding-left: 450px;	
+}
+.hov: hover{
+	cursor: pointer;
+	background-color: white;
+}
+.align-search{
+	display: flex;
+	justify-content: center;
+	padding-left: 450px;
+	padding-top: 50px;
+	vertical-align: middle;
+	width: 750px;
+
+}
+.main-head{
+	font-size: 90px;
+	font-family: sans-serif;
+	padding-top: 150px;
+}
+.align-center{
+	display: flex;
+	justify-content: center;
+}
+a:hover {
+	text-decoration: underline;
+}
+#message{
+	size: 100px;
+	 -moz-animation: cssAnimation 0s ease-in 10s forwards;
+    /* Firefox */
+    -webkit-animation: cssAnimation 0s ease-in 10s forwards;
+    /* Safari and Chrome */
+    -o-animation: cssAnimation 0s ease-in 10s forwards;
+    /* Opera */
+    animation: cssAnimation 0s ease-in 10s forwards;
+    -webkit-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+}
+#container{
+	display: flex;
+	justify-content: center;
+}
+.fill-80-viewport {
+  min-height: 80vh
+}
+.text-white-70 {
+  color: rgba(255,255,255,0.7)
+}
+.text-white-40 {
+  color: rgba(255,255,255,0.4)
+}
+@keyframes cssAnimation {
+    to {
+        width:0;
+        height:0;
+        overflow:hidden;
+    }
+}
+@-webkit-keyframes cssAnimation {
+    to {
+        width:0;
+        height:0;
+        visibility:hidden;
+    }
+}
