@@ -25,9 +25,10 @@
 
 
 
-## Database schema:
+## Database schema: INST377
 
  ### Tables:
+ 
   #### Admin - email and password for admins 
   * admin_id (Primary Key) - int
   * admin_email - varchar
@@ -48,4 +49,13 @@
   * room_number - int
   
   #### User- name, email, and passwords of users
+  * user_id (Primary Key) - int
+  * email - varchar
+  * password - varchar
+  * user_first_name - varchar
+  * user_last_name - varchar
+  
   #### User_save - saves buildings for users
+  * save_id (Primary Key) - int
+  * user_id - int
+  * building_id - int
